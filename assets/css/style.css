@@ -95,7 +95,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .logo__img { width: 40px; height: 40px; }
 .logo__txt span { color: var(--accent); }
 
-.hero__content, .hero__top { z-index: 1; }
+.hero__content { z-index: 1; }
+.hero__top { z-index: 3; }   /* na frente do bloco central: no celular ele cobre a tela toda e engolia o toque no Instagram/logo */
 .hero__content {
   position: relative;
   width: min(900px, 100% - 2 * var(--gutter));
