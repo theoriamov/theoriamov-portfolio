@@ -299,15 +299,25 @@ function renderHome() {
   }
 }
 
-/* Botões flutuantes da home. Posição = centro do botão, em % da tela.
-   No modo de edição (localhost) dá para arrastar; salva em posicoes.js. */
-const POSICOES_PADRAO = [[20, 30], [42, 20], [80, 28], [85, 64], [15, 66], [64, 16], [50, 84], [30, 84]];
+/* Botões flutuantes da home. Posição = centro do botão, em % do BLOCO CENTRAL do texto (não da tela),
+   assim as nuvens ficam em volta da frase em qualquer tamanho de tela.
+   No modo de edição (localhost) dá para arrastar no computador; salva em posicoes.js. */
+const POS_COMPUTADOR = {
+  empresarial: [12, 12], eventos: [38, 5], "video-com-ia": [64, 11], gastronomico: [88, 15],
+  influencers: [3, 63], youtube: [97, 63],
+};
+const POS_CELULAR = {   // em cima (duas fileiras, abaixo do cabeçalho) e embaixo dos botões
+  empresarial: [26, 13], eventos: [74, 14.5], gastronomico: [30, 21.5], "video-com-ia": [72, 22.5],
+  influencers: [30, 80], youtube: [70, 84.6],
+};
+const ehCelular = () => matchMedia("(max-width: 700px)").matches;
 
 function renderFlutuantes() {
   const box = $("#floaters");
   const salvas = typeof POSICOES === "undefined" ? {} : { ...POSICOES };
   box.innerHTML = CATEGORIAS.map((c, i) => {
-    const [x, y] = salvas[c.id] || POSICOES_PADRAO[i % POSICOES_PADRAO.length];
+    const padrao = (ehCelular() ? POS_CELULAR : POS_COMPUTADOR)[c.id] || [50, 50];
+    const [x, y] = (!ehCelular() && salvas[c.id]) || padrao;
     return `<a class="floater pill pill--light" data-id="${c.id}" href="trabalhos.html?cat=${c.id}"
       style="left:${x}%;top:${y}%;animation-delay:${-i * 1.3}s">${esc(c.nome)}${EDITAR ? `<span class="floater__alca" title="Arrastar para mover">⠿</span>` : ""}</a>`;
   }).join("");
@@ -348,8 +358,8 @@ function renderFlutuantes() {
     moveu = true;
     arrastando.classList.add("is-arrastando");
     const r = box.getBoundingClientRect();
-    const x = Math.min(98, Math.max(2, ((e.clientX - inicio.dx - r.left) / r.width) * 100));
-    const y = Math.min(96, Math.max(4, ((e.clientY - inicio.dy - r.top) / r.height) * 100));
+    const x = Math.min(110, Math.max(-10, ((e.clientX - inicio.dx - r.left) / r.width) * 100));
+    const y = Math.min(110, Math.max(-10, ((e.clientY - inicio.dy - r.top) / r.height) * 100));
     arrastando.style.left = `${x.toFixed(1)}%`;
     arrastando.style.top = `${y.toFixed(1)}%`;
   });

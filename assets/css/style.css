@@ -184,9 +184,8 @@ html { scroll-behavior: smooth; }
 @media (max-width: 700px) { .floater__alca { display: none; } }
 
 @media (max-width: 700px) {
-  .hero__content { padding: 240px 0 120px; }
-  .floaters { inset: 84px 16px auto; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-  .floater { position: static; translate: none; }
+  .hero__content { padding: 230px 0 210px; }
+  .floater { font-size: .66rem; padding: .6em 1em; }   /* nuvens um pouco menores no celular */
 }
 
 /* ---------- Home: Por que tHeorIA? ---------- */
