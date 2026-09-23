@@ -1,7 +1,27 @@
-/* Posição dos botões da home (em % do bloco central do texto), arrastados no modo de edição. */
+/* Posição dos botões da home (em % da tela), arrastados no modo de edição. */
 const POSICOES = {
-  "video-com-ia": [56.6, 11.2],
-  "empresarial": [12.3, 11.1],
-  "eventos": [34.4, 8],
-  "gastronomico": [81.6, 14]
+  "video-com-ia": [
+    95.2,
+    19.9
+  ],
+  "empresarial": [
+    5.6,
+    20.7
+  ],
+  "eventos": [
+    8.6,
+    75.5
+  ],
+  "gastronomico": [
+    62.3,
+    15.3
+  ],
+  "influencers": [
+    31.1,
+    13
+  ],
+  "youtube": [
+    87.6,
+    76.7
+  ]
 };

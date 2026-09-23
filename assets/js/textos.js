@@ -5,5 +5,6 @@ const TEXTOS = {
   "porque.contexto": "Em Lucas 23, a Bíblia narra a crucificação de Jesus. A multidão que estava ali não apenas assistiu: contemplou algo tão grandioso que  quem realmente entendeu aquele evento, não voltou para casa do mesmo jeito. No versículo 48, é exatamente essa palavra que aparece:",
   "porque.citacao": "“…toda a multidão que se ajuntara para aquele espetáculo (θεωρίαν - theorían), vendo o que havia acontecido, voltou batendo no peito.”",
   "porque.fechamento": "Quem olhou com atenção foi transformado. É isso que acontece quando contemplamos algo excelente, algo belo. E é isso que buscamos em cada vídeo: fazer as pessoas pararem, olharem com atenção e serem impactadas.",
-  "sobre.texto.0": "Somos uma produtora audiovisual com um foco claro: mostrar o real valor de cada cliente e de cada profissional. Trabalhamos perto de quem contrata, do primeiro alinhamento à entrega final, e acreditamos que até os stories fazem diferença."
+  "sobre.texto.0": "Somos uma produtora audiovisual com um foco claro: mostrar o real valor de cada cliente e de cada profissional. Trabalhamos perto de quem contrata, do primeiro alinhamento à entrega final, e acreditamos que até os stories fazem diferença.",
+  "titulo": "HISTÓRIAS QUE SE MOVEM"
 };

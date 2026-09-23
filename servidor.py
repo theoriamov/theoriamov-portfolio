@@ -20,6 +20,7 @@ ARQUIVOS = {
     "ocultos": ("ocultos.js", "OCULTOS", "Vídeos escondidos pelo botão X do modo de edição.", list),
     "posicoes": ("posicoes.js", "POSICOES", "Posição dos botões da home (em % da tela), arrastados no modo de edição.", dict),
     "textos": ("textos.js", "TEXTOS", "Textos editados direto na página (modo de edição). Valem por cima do dados.js.", dict),
+    "rotacoes": ("rotacoes.js", "ROTACOES", "Ângulo (graus) de cada botão da home, ajustado no modo de edição.", dict),
     "fotos": ("fotos.js", "FOTOS", "Enquadramento das fotos de fundo dos cards (x, y em % e zoom), ajustado no modo de edição.", dict),
 }
 

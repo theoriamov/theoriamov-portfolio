@@ -308,37 +308,23 @@ const POS_COMPUTADOR = {
   // (assim acompanha os botões em qualquer tamanho de tela).
   influencers: [9, 150, "b"], youtube: [91, 138, "b"],
 };
-// Celular: as nuvens formam um círculo em volta do título ("HISTÓRIAS QUE SE" / "MOVEM").
-// Valores = [distância do centro em px (− esquerda, + direita), altura em px a partir do topo do bloco].
-// O título começa a 230px do topo e tem 2 linhas (~79px), então: 200 = acima, 150 = fileira de cima, 296 = ao lado de "MOVEM".
-const POS_CELULAR = {
-  empresarial: [-97, 200],      // diagonal, ao lado do "H" de HISTÓRIAS
-  eventos: [104, 206],          // diagonal, ao lado do "SE"
-  gastronomico: [-72, 150],     // fileira de cima, fechando o arco
-  "video-com-ia": [70, 152],
-  influencers: [-122, 304],     // abaixo de HISTÓRIAS, à esquerda de MOVEM
-  youtube: [114, 298],          // abaixo de SE, à direita de MOVEM
+const POS_CELULAR = {   // em cima (duas fileiras, abaixo do cabeçalho) e embaixo dos botões
+  empresarial: [26, 13], eventos: [74, 14.5], gastronomico: [30, 21.5], "video-com-ia": [72, 22.5],
+  influencers: [30, 80], youtube: [70, 84.6],
 };
 const ehCelular = () => matchMedia("(max-width: 700px)").matches;
-// Girou o celular / redimensionou a janela passando do limite: refaz o arranjo
-matchMedia("(max-width: 700px)").addEventListener("change", () => {
-  if (document.body.dataset.page === "home") location.reload();
-});
 
 function renderFlutuantes() {
   const box = $("#floaters");
   const salvas = typeof POSICOES === "undefined" ? {} : { ...POSICOES };
+  const giros = typeof ROTACOES === "undefined" ? {} : { ...ROTACOES };   // ângulo (graus) de cada nuvem
   box.innerHTML = CATEGORIAS.map((c, i) => {
     const padrao = (ehCelular() ? POS_CELULAR : POS_COMPUTADOR)[c.id] || [50, 50];
-    let esq, topo;
-    if (ehCelular()) {
-      esq = `calc(50% + ${padrao[0]}px)`; topo = `${padrao[1]}px`;
-    } else {
-      const [x, y, ancora] = salvas[c.id] || padrao;
-      esq = `${x}%`; topo = ancora === "b" ? `calc(100% - ${y}px)` : `${y}%`;
-    }
+    const [x, y, ancora] = (!ehCelular() && salvas[c.id]) || padrao;
+    const topo = ancora === "b" ? `calc(100% - ${y}px)` : `${y}%`;
+    const giro = ehCelular() ? 0 : giros[c.id] || 0;
     return `<a class="floater pill pill--light" data-id="${c.id}" href="trabalhos.html?cat=${c.id}"
-      style="left:${esq};top:${topo};animation-delay:${-i * 1.3}s">${esc(c.nome)}${EDITAR ? `<span class="floater__alca" title="Arrastar para mover">⠿</span>` : ""}</a>`;
+      style="left:${x}%;top:${topo};--rot:${giro}deg;animation-delay:${-i * 1.3}s">${esc(c.nome)}${EDITAR ? `<span class="floater__alca" title="Arrastar para mover">⠿</span><span class="floater__giro" title="Arraste para girar (Shift = de 15 em 15°). Duplo clique zera">↻</span>` : ""}</a>`;
   }).join("");
   if (!EDITAR) return;
 
@@ -398,7 +384,52 @@ function renderFlutuantes() {
   box.addEventListener("pointercancel", soltar);
   // Clique na alça, ou que veio de um arrasto, nunca abre o link
   box.addEventListener("click", (e) => {
-    if (e.target.closest(".floater__alca") || moveu) { e.preventDefault(); moveu = false; }
+    if (e.target.closest(".floater__alca, .floater__giro") || moveu) { e.preventDefault(); moveu = false; }
+  });
+
+  // ↻ Girar: arrastar em volta do centro da nuvem. Shift trava de 15 em 15°. Duplo clique zera.
+  let girando = null;
+  const guardarGiros = () =>
+    fetch("/api/rotacoes", { method: "POST", body: JSON.stringify(giros) })
+      .catch(() => alert("Não consegui salvar. Abra o site pelo ABRIR PORTFOLIO.bat."));
+  const angulo = (el, e) => {
+    const r = el.getBoundingClientRect();
+    return (Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180) / Math.PI;
+  };
+  box.addEventListener("pointerdown", (e) => {
+    const h = e.target.closest(".floater__giro");
+    if (!h || e.button !== 0 || ehCelular()) return;
+    e.preventDefault();
+    const el = h.closest(".floater");
+    girando = { el, h, a0: angulo(el, e), r0: giros[el.dataset.id] || 0, mudou: false };
+    h.setPointerCapture(e.pointerId);
+    el.classList.add("is-girando");
+  });
+  box.addEventListener("pointermove", (e) => {
+    if (!girando) return;
+    let r = girando.r0 + (angulo(girando.el, e) - girando.a0);
+    r = ((r + 540) % 360) - 180;                       // mantém entre -180° e 180°
+    if (e.shiftKey) r = Math.round(r / 15) * 15;
+    r = Math.round(r * 10) / 10;
+    girando.mudou = true;
+    giros[girando.el.dataset.id] = r;
+    girando.el.style.setProperty("--rot", `${r}deg`);
+  });
+  const soltarGiro = () => {
+    if (!girando) return;
+    girando.el.classList.remove("is-girando");
+    if (girando.mudou) guardarGiros();
+    girando = null;
+  };
+  box.addEventListener("pointerup", soltarGiro);
+  box.addEventListener("pointercancel", soltarGiro);
+  box.addEventListener("dblclick", (e) => {
+    const h = e.target.closest(".floater__giro");
+    if (!h) return;
+    const el = h.closest(".floater");
+    giros[el.dataset.id] = 0;
+    el.style.setProperty("--rot", "0deg");
+    guardarGiros();
   });
 }
 

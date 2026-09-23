@@ -165,9 +165,10 @@ html { scroll-behavior: smooth; }
   white-space: nowrap;
   animation: float 6s ease-in-out infinite;
 }
+/* --rot = ângulo fixo da nuvem (definido no modo de edição); o balanço de ±2° continua por cima */
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50%      { transform: translateY(-12px) rotate(2deg); }
+  0%, 100% { transform: translateY(0) rotate(calc(var(--rot, 0deg) - 2deg)); }
+  50%      { transform: translateY(-12px) rotate(calc(var(--rot, 0deg) + 2deg)); }
 }
 /* Modo edição: só a alcinha (⠿) arrasta — o resto do botão continua um link normal */
 .floater__alca {
@@ -179,15 +180,24 @@ html { scroll-behavior: smooth; }
   cursor: grab; touch-action: none;
 }
 .floater__alca:hover { transform: scale(1.15); }
-.floaters--editar .floater.is-arrastando { animation: none; }
+/* ↻ girar: no canto oposto da alcinha de mover */
+.floater__giro {
+  position: absolute; bottom: -9px; left: -9px; z-index: 1;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--fg); color: var(--bg); font-size: .85rem; line-height: 1; font-weight: 700;
+  border: 2px solid var(--bg);
+  cursor: alias; touch-action: none;
+}
+.floater__giro:hover { transform: scale(1.15); }
+.floaters--editar .floater.is-arrastando, .floaters--editar .floater.is-girando { animation: none; }
 .floaters--editar .floater.is-arrastando .floater__alca { cursor: grabbing; }
-@media (max-width: 700px) { .floater__alca { display: none; } }
+.floaters--editar .floater.is-girando { transform: rotate(var(--rot, 0deg)); }
+@media (max-width: 700px) { .floater__alca, .floater__giro { display: none; } }
 
 @media (max-width: 700px) {
-  .hero__content { padding: 230px 0 150px; }
-  .floater { font-size: .6rem; padding: .55em .85em; letter-spacing: .06em; }   /* nuvens menores no celular */
-  .hero__title .palavra-move { display: table; margin: 0 auto; }   /* "MOVEM" sempre na 2ª linha */
-  @keyframes float { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
+  .hero__content { padding: 230px 0 210px; }
+  .floater { font-size: .66rem; padding: .6em 1em; }   /* nuvens um pouco menores no celular */
 }
 
 /* ---------- Home: Por que tHeorIA? ---------- */
