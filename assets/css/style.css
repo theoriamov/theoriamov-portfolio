@@ -41,6 +41,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .pill--ghost:hover { background: var(--fg); color: var(--bg); transform: translateY(-2px); }
 .pill--accent { background: var(--accent); color: #fff; }
 .pill--accent:hover { background: var(--fg); color: var(--bg); transform: translateY(-2px); }
+/* Vidro escuro: usado nas nuvens da home, para não ficar da mesma cor do título */
+.pill--vidro {
+  background: rgba(20, 20, 22, .55);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 241, 234, .35);
+  color: var(--fg);
+}
+.pill--vidro:hover { background: rgba(255, 31, 31, .25); border-color: var(--accent); color: var(--fg); transform: translateY(-2px); }
 
 /* ---------- HOME / HERO ---------- */
 .hero {
@@ -84,9 +92,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-display);
   font-size: 1.35rem; letter-spacing: .02em;
 }
-.logo__img { width: 40px; height: 40px; mix-blend-mode: screen; /* some o fundo preto da logo */ }
+.logo__img { width: 40px; height: 40px; }
 .logo__txt span { color: var(--accent); }
 
+.hero__content, .hero__top { z-index: 1; }
 .hero__content {
   position: relative;
   width: min(900px, 100% - 2 * var(--gutter));
@@ -100,6 +109,21 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   line-height: .95;
   text-transform: uppercase;
   letter-spacing: .01em;
+}
+/* Última palavra do título: uma barra de luz varre a palavra, como o cursor ("playhead") de um player de vídeo */
+.palavra-move {
+  display: inline-block;
+  background-image: linear-gradient(100deg,
+    var(--fg) 0%, var(--fg) 38%, var(--accent) 48%, #fff 51%, var(--accent) 54%, var(--fg) 64%, var(--fg) 100%);
+  background-size: 220% auto;
+  background-clip: text; -webkit-background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+  animation: passar-luz 3.4s linear infinite;
+}
+@keyframes passar-luz {
+  0%   { background-position: 0% 0; }
+  55%  { background-position: 220% 0; }
+  100% { background-position: 220% 0; }
 }
 .hero__sub {
   max-width: 34em; margin: 1.2rem auto 2rem;
@@ -134,7 +158,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 html { scroll-behavior: smooth; }
 
 /* Botões flutuantes das categorias — posição (left/top em % da tela) vem do main.js / posicoes.js */
-.floaters { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.floaters { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
 .floater {
   position: absolute; pointer-events: auto;
   translate: -50% -50%;
@@ -145,9 +169,19 @@ html { scroll-behavior: smooth; }
   0%, 100% { transform: translateY(0) rotate(-2deg); }
   50%      { transform: translateY(-12px) rotate(2deg); }
 }
-/* Modo edição: arrastar */
-.floaters--editar .floater { cursor: grab; touch-action: none; outline: 2px dashed rgba(255, 31, 31, .75); outline-offset: 4px; }
-.floaters--editar .floater.is-arrastando { cursor: grabbing; animation: none; outline-style: solid; }
+/* Modo edição: só a alcinha (⠿) arrasta — o resto do botão continua um link normal */
+.floater__alca {
+  position: absolute; top: -9px; right: -9px; z-index: 1;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent); color: #fff; font-size: .8rem; line-height: 1;
+  border: 2px solid var(--bg);
+  cursor: grab; touch-action: none;
+}
+.floater__alca:hover { transform: scale(1.15); }
+.floaters--editar .floater.is-arrastando { animation: none; }
+.floaters--editar .floater.is-arrastando .floater__alca { cursor: grabbing; }
+@media (max-width: 700px) { .floater__alca { display: none; } }
 
 @media (max-width: 700px) {
   .hero__content { padding: 240px 0 120px; }
@@ -156,7 +190,43 @@ html { scroll-behavior: smooth; }
 }
 
 /* ---------- Home: Por que tHeorIA? ---------- */
-.porque { padding: clamp(64px, 10vw, 130px) var(--gutter) 0; scroll-margin-top: 20px; }
+/* Efeito sutil: anéis concêntricos (câmera/olhar), girando bem devagar */
+.olho {
+  position: absolute; z-index: 0; pointer-events: none;
+  aspect-ratio: 1; border-radius: 50%;
+  animation: olho-girar 90s linear infinite;
+}
+.olho span {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid rgba(255, 31, 31, .5);
+}
+.olho span:nth-child(1) { inset: 0; }
+.olho span:nth-child(2) { inset: 14%; border-color: rgba(244, 241, 234, .28); }
+.olho span:nth-child(3) { inset: 30%; border-color: rgba(255, 31, 31, .35); }
+@keyframes olho-girar { to { transform: rotate(360deg); } }
+
+.olho--hero { width: clamp(340px, 42vw, 620px); top: -8%; right: -6%; opacity: .5; }
+.olho--porque { width: clamp(280px, 32vw, 480px); top: -6%; right: -4%; opacity: .4; }
+
+@media (max-width: 700px) {
+  .olho { opacity: .28 !important; width: 60vw !important; }
+}
+@media (prefers-reduced-motion: reduce) { .olho { animation: none; } }
+
+.porque { position: relative; overflow: hidden; padding: clamp(64px, 10vw, 130px) var(--gutter) 0; scroll-margin-top: 20px; }
+.porque__inner { position: relative; z-index: 1; }
+/* Imagem só do lado direito, esmaecendo para o preto (multidão contemplando a luz) */
+.porque__imagem {
+  position: absolute; top: 0; right: 0; bottom: 0; z-index: 0; pointer-events: none;
+  width: min(46%, 600px);
+  background: url("../img/teoria.jpg") center / cover no-repeat;
+  opacity: .8;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 55%), linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0%, #000 55%), linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  mask-composite: intersect;
+}
+@media (max-width: 800px) { .porque__imagem { width: 100%; opacity: .22; } }
 .porque__inner { max-width: 820px; }
 .porque__rotulo {
   display: flex; align-items: center; gap: 14px;
@@ -188,12 +258,52 @@ html { scroll-behavior: smooth; }
 @media (max-width: 900px) { .entregas__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 520px) { .entregas__grid { grid-template-columns: 1fr; } }
 .entrega {
+  position: relative; overflow: hidden;
   display: flex; flex-direction: column; gap: 10px;
   padding: clamp(20px, 2.4vw, 30px);
   border: 1px solid var(--line); background: var(--bg-2);
   transition: border-color .25s, transform .25s;
 }
 .entrega:hover { border-color: var(--accent); transform: translateY(-4px); }
+/* Foto sutil de fundo: sempre escurecida, pra não brigar com o texto */
+.entrega__foto {
+  position: absolute; inset: 0; z-index: 0;
+  background-size: cover; background-position: center; transform-origin: center;
+  transition: transform .2s ease;
+}
+.entrega--foto::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(11,11,12,.35) 0%, rgba(11,11,12,.55) 55%, rgba(11,11,12,.85) 100%);
+  transition: opacity .25s;
+}
+.entrega--foto > .entrega__cat, .entrega--foto > .entrega__palavra,
+.entrega--foto > .entrega__texto, .entrega--foto > .entrega__ver { position: relative; z-index: 2; }
+.entrega--foto:hover::before { opacity: .7; }
+
+/* Modo edição: ajustar o enquadramento da foto (mover e zoom) */
+.entrega__ajustar {
+  position: absolute; top: 10px; right: 10px; z-index: 4;
+  padding: .35em .8em; border-radius: var(--radius);
+  background: rgba(11,11,12,.8); border: 1px solid rgba(244,241,234,.4);
+  font-size: .68rem; font-weight: 700; letter-spacing: .04em;
+}
+.entrega__ajustar:hover { border-color: var(--accent); color: var(--accent); }
+.entrega--ajustando { cursor: grab; touch-action: none; user-select: none; border-color: var(--accent); transform: none !important; }
+.entrega--ajustando.entrega--arrastando { cursor: grabbing; }
+.entrega--ajustando::before { opacity: .12; }
+.entrega--ajustando > .entrega__cat, .entrega--ajustando > .entrega__palavra,
+.entrega--ajustando > .entrega__texto, .entrega--ajustando > .entrega__ver { opacity: .35; }
+.entrega--ajustando .entrega__foto { transition: none; }
+.entrega__ctrl {
+  position: absolute; left: 50%; bottom: 10px; translate: -50% 0; z-index: 4;
+  display: flex; align-items: center; gap: 8px; max-width: calc(100% - 20px);
+  padding: 6px 10px; border-radius: var(--radius);
+  background: rgba(11,11,12,.85); border: 1px solid rgba(244,241,234,.3);
+  font-size: .68rem; white-space: nowrap;
+}
+.entrega__ctrl span { opacity: .7; overflow: hidden; text-overflow: ellipsis; }
+.entrega__ctrl button { width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(244,241,234,.4); font-size: 1rem; line-height: 1; }
+.entrega__ctrl button:hover { border-color: var(--accent); color: var(--accent); }
 .entrega__cat { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .entrega__palavra {
   font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
@@ -394,11 +504,53 @@ html { scroll-behavior: smooth; }
 
 /* ---------- CTA + Rodapé ---------- */
 .cta {
+  position: relative; overflow: hidden;
   margin-top: clamp(60px, 10vw, 120px);
   padding: clamp(40px, 8vw, 90px) var(--gutter);
   border-top: 1px solid var(--line);
   text-align: center;
 }
+.cta > *:not(.olho) { position: relative; z-index: 1; }
+
+/* Luzes suaves de fundo, só com cores da paleta (creme e vermelho). Esmaecem nas pontas, sem borda dura. */
+:root { --luz-entregas: 244, 241, 234; }
+.entregas, .quem { position: relative; isolation: isolate; overflow: hidden; }
+.entregas::before, .quem::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 70%, transparent 100%);
+}
+.entregas::before { background: radial-gradient(60% 90% at 6% 20%, rgba(var(--luz-entregas), .10), transparent 70%); }
+.quem::before {
+  background:
+    radial-gradient(55% 100% at 100% 50%, rgba(255, 31, 31, .26), transparent 70%),
+    radial-gradient(45% 80% at 0% 100%, rgba(140, 10, 25, .30), transparent 70%);
+}
+/* Detalhe: perfuração de fita de cinema no topo da seção, esmaecendo para a direita */
+.quem::after {
+  content: ""; position: absolute; top: 26px; left: var(--gutter); right: 0; height: 12px;
+  z-index: -1; pointer-events: none;
+  background: repeating-linear-gradient(90deg, rgba(244, 241, 234, .22) 0 16px, transparent 16px 34px);
+  border-radius: 3px;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 85%);
+  mask-image: linear-gradient(90deg, #000 0%, transparent 85%);
+}
+/* Bora criar juntos: brilho vermelho pulsando atrás do título + luz que passa pelo botão */
+.cta::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(50% 75% at 50% 55%, rgba(255, 31, 31, .24), transparent 72%);
+  animation: cta-pulso 5s ease-in-out infinite;
+}
+@keyframes cta-pulso { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+.cta .pill--accent { position: relative; overflow: hidden; }
+.cta .pill--accent::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .55), transparent);
+  transform: skewX(-20deg); pointer-events: none;
+  animation: cta-brilho 4.2s ease-in-out infinite;
+}
+@keyframes cta-brilho { 0% { left: -60%; } 45%, 100% { left: 130%; } }
+.olho--cta { width: clamp(260px, 30vw, 440px); top: 50%; left: 50%; translate: -50% -50%; opacity: .3; }
 .cta__title {
   font-family: var(--font-display); font-weight: 400; text-transform: uppercase;
   font-size: clamp(2rem, 6vw, 4.2rem); line-height: 1; margin-bottom: 24px;
@@ -420,4 +572,5 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+  .palavra-move { background: none; color: var(--fg); -webkit-text-fill-color: var(--fg); }
 }

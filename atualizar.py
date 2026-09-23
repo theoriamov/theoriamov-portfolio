@@ -25,6 +25,29 @@ JS = RAIZ / "assets" / "js" / "projetos.js"
 VIDEOS = {".mp4", ".mov", ".m4v", ".webm", ".mkv", ".avi"}
 FOTOS = {".jpg", ".jpeg", ".png", ".webp"}
 
+# Qualidade dos vídeos (1080p) — mesma de sempre
+CRF = "24"
+PRESET = "medium"
+
+# Vídeos que você removeu com o ✕ no modo de edição: não são convertidos nem publicados
+OCULTOS_JS = RAIZ / "assets" / "js" / "ocultos.js"
+
+
+def ler_ocultos():
+    try:
+        texto = OCULTOS_JS.read_text(encoding="utf-8")
+        return set(json.loads(texto[texto.index("["): texto.rindex("]") + 1]))
+    except (OSError, ValueError):
+        return set()
+
+
+OCULTOS = ler_ocultos()
+
+
+def ordem_natural(nome):
+    """'2-x' vem antes de '10-x' (ordem numérica no começo do nome)."""
+    return [int(t) if t.isdigit() else t for t in re.split(r"(\d+)", nome.lower())]
+
 
 def slug(texto):
     t = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
@@ -74,6 +97,8 @@ def ler_info(pasta):
             info["titulo"] = valor
         elif chave == "ano":
             info["ano"] = valor
+        elif chave == "limite":   # só os N primeiros vídeos (os mais recentes, pela numeração)
+            info["limite"] = int(valor)
         elif chave in ("instagram", "canal", "tiktok", "site"):
             info.setdefault("redes", {})[chave] = valor
     return info
@@ -87,20 +112,25 @@ def processar_cliente(pasta, categoria_id, gerados):
     destino = SAIDA / categoria_id / slug(pasta.name)
     destino.mkdir(parents=True, exist_ok=True)
     info = ler_info(pasta)
-    itens, capa = [], None
+    itens, capa, n_videos = [], None, 0
 
-    for arq in sorted(pasta.iterdir(), key=lambda p: p.name.lower()):
+    for arq in sorted(pasta.iterdir(), key=lambda p: ordem_natural(p.name)):
         ext = arq.suffix.lower()
         nome = slug(arq.stem)
 
         if ext in VIDEOS:
             mp4 = destino / f"{nome}.mp4"
             thumb = destino / f"{nome}-thumb.jpg"
+            if web(mp4) in OCULTOS:   # removido com o ✕: fica de fora (e os arquivos dele são apagados)
+                continue
+            if info.get("limite") and n_videos >= info["limite"]:   # passou do limite da pasta
+                continue
+            n_videos += 1
             if not atualizado(arq, mp4):
                 print(f"    convertendo vídeo: {arq.name}")
                 ffmpeg("-i", str(arq),
                        "-vf", "scale='if(gte(iw,ih),min(1920,iw),-2)':'if(gte(iw,ih),-2,min(1920,ih))'",
-                       "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-pix_fmt", "yuv420p",
+                       "-c:v", "libx264", "-preset", PRESET, "-crf", CRF, "-pix_fmt", "yuv420p",
                        "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(mp4))
             if mp4.exists() and not atualizado(mp4, thumb):
                 ffmpeg("-ss", "1", "-i", str(mp4), "-frames:v", "1", "-vf", "scale='min(1280,iw)':-2",
@@ -129,7 +159,8 @@ def processar_cliente(pasta, categoria_id, gerados):
         elif ext and arq.name.lower() != "info.txt" and not arq.is_dir():
             print(f"    (ignorado, formato não suportado: {arq.name})")
 
-    itens += [{"tipo": "youtube", "id": yt, **({"titulo": t} if t else {})} for yt, t in info["youtube"]]
+    itens += [{"tipo": "youtube", "id": yt, **({"titulo": t} if t else {})}
+              for yt, t in info["youtube"] if f"yt:{yt}" not in OCULTOS]
     if not itens:
         return None
 

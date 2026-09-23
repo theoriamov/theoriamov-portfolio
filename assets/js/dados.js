@@ -29,12 +29,12 @@ const SITE = {
 
   sobre: {
     texto: [
-      "Somos uma produtora audiovisual com um foco claro: mostrar para as pessoas o real valor de cada cliente e de cada profissional.",
-      "Temos uma atenção a mais: somos presentes do começo ao fim — e acreditamos que até os stories fazem diferença.",
-      "100% focados no resultado de quem confia no nosso trabalho.",
+      "Somos uma produtora audiovisual com um foco claro: mostrar o real valor de cada cliente e de cada profissional. Trabalhamos perto de quem contrata, do primeiro alinhamento à entrega final — e acreditamos que até os stories fazem diferença.",
+      "Atendemos empresas, eventos, gastronomia, canais de YouTube e figuras públicas, cada um com o seu jeito, sem fórmula pronta: vitrine para quem precisa ser bem representado, desejo para quem vende sabor, verdade para quem realiza eventos e praticidade, com IA, para quem precisa de agilidade.",
+      "Aqui você fala direto com quem cria, sem intermediário — sempre de olho no resultado de quem confia no nosso trabalho.",
     ],
     servicos: ["Vídeos empresariais", "Cobertura de eventos", "Vídeos gastronômicos", "YouTube", "Influencers", "Vídeos com IA", "Stories"],
-    foto: "",                                  // ex.: "assets/img/equipe.jpg"
+    foto: "assets/img/sobre.jpg",              // foto da página "Sobre nós"
   },
 
   // "Por que tHeorIA?" — aparece logo abaixo da abertura
@@ -50,10 +50,10 @@ const SITE = {
   // "O que entregamos" — aparece na tela principal, logo abaixo da abertura.
   // categoria = id da categoria (o card leva para ela)
   entregas: [
-    { categoria: "empresarial",  palavra: "Vitrine",      texto: "Profissionais e empresas mais bem representados." },
-    { categoria: "gastronomico", palavra: "Desejo",       texto: "Vídeos que despertam a vontade de estar ali." },
-    { categoria: "eventos",      palavra: "Verdade",      texto: "Mostramos o que realmente rolou no dia." },
-    { categoria: "video-com-ia", palavra: "Praticidade",  texto: "Vídeos criados com IA, sem precisar de uma produção cinematográfica." },
+    { categoria: "empresarial",  palavra: "Vitrine",      texto: "Profissionais e empresas mais bem representados.", fundo: "assets/img/entregas/vitrine.jpg", posicao: "center 62%" },
+    { categoria: "gastronomico", palavra: "Desejo",       texto: "Vídeos que despertam a vontade de estar ali.", fundo: "assets/img/entregas/desejo.jpg" },
+    { categoria: "eventos",      palavra: "Verdade",      texto: "Mostramos o que realmente rolou no dia.", fundo: "assets/img/entregas/verdade.jpg" },
+    { categoria: "video-com-ia", palavra: "Praticidade",  texto: "Vídeos criados com IA, sem precisar de uma produção cinematográfica.", fundo: "assets/img/entregas/praticidade.jpg" },
   ],
 };
 
@@ -64,7 +64,7 @@ const CATEGORIAS = [
   { id: "eventos",      nome: "Eventos" },
   { id: "gastronomico", nome: "Gastronômico" },
   { id: "youtube",      nome: "YouTube" },
-  { id: "influencers",  nome: "Influencers" },
+  { id: "influencers",  nome: "Figura pública" },
   { id: "video-com-ia", nome: "Vídeo com IA" },
 ];
 

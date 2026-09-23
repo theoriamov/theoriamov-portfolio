@@ -24,6 +24,14 @@ const ICON_PLAY = `<svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z"/></svg>`;
 const ed = (caminho) => ` data-editar="${caminho}"`;
 // **palavra** = destaque (vermelho e negrito)
 const fmt = (texto) => esc(texto).replace(/\*\*(.+?)\*\*/g, "<strong class=\"destaque\">$1</strong>");
+
+// Anima a última palavra do título: uma barra de luz "roda" por cima, como o cursor de um player de vídeo
+function tituloHtml(texto) {
+  const m = (texto || "").match(/(\S+)(\s*)$/);
+  if (!m) return fmt(texto);
+  const antes = texto.slice(0, m.index);
+  return `${fmt(antes)}<span class="palavra-move">${esc(m[1])}</span>`;
+}
 const lerCaminho = (caminho) => caminho.split(".").reduce((o, p) => (o == null ? o : o[p]), SITE);
 
 // Grava um valor em SITE seguindo o caminho (ex.: "entregas.1.texto")
@@ -53,7 +61,7 @@ function ativarEdicaoTextos() {
     el.addEventListener("focus", () => { el.textContent = lerCaminho(el.dataset.editar) ?? ""; });
     el.addEventListener("blur", () => {
       const valor = el.innerText.replace(/\n{3,}/g, "\n\n").trim();
-      el.innerHTML = fmt(valor);
+      el.innerHTML = el.dataset.editar === "titulo" ? tituloHtml(valor) : fmt(valor);
       if ((lerCaminho(el.dataset.editar) ?? "") === valor) return;
       editados[el.dataset.editar] = valor;
       gravarCaminho(el.dataset.editar, valor);
@@ -96,6 +104,7 @@ function renderFooter() {
   if (!el) return;
   el.innerHTML = `
     <section class="cta">
+      <div class="olho olho--cta" aria-hidden="true"><span></span><span></span><span></span></div>
       <h2 class="cta__title">Bora criar <em>juntos?</em></h2>
       <a class="pill pill--accent" href="${esc(whatsappUrl())}" target="_blank" rel="noopener">Crie com a ${esc(SITE.marca)}</a>
     </section>
@@ -110,11 +119,131 @@ function renderFooter() {
     </footer>`;
 }
 
+/* ---------- Fotos de fundo dos cards "O que entregamos" ----------
+   Enquadramento = { x, y (% da posição da foto) , z (zoom, 1 a 3) }. No modo de edição dá pra ajustar. */
+const limitar = (v, a, b) => Math.min(b, Math.max(a, v));
+
+function estadoFoto(e) {
+  const salvo = typeof FOTOS !== "undefined" ? FOTOS[e.categoria] : null;
+  if (salvo) return { x: salvo.x, y: salvo.y, z: salvo.z };
+  const [px = "", py = ""] = (e.posicao || "").split(/\s+/);
+  const n = (v) => (v === "center" || v === "" ? 50 : parseFloat(v) || 50);
+  return { x: n(px), y: n(py), z: 1 };
+}
+
+function ativarAjusteFotos() {
+  if (!EDITAR) return;
+  const fotos = typeof FOTOS === "undefined" ? {} : { ...FOTOS };
+  let timer = null;
+  const guardar = () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fetch("/api/fotos", { method: "POST", body: JSON.stringify(fotos) })
+        .catch(() => alert("Não consegui salvar. Abra o site pelo ABRIR PORTFOLIO.bat."));
+    }, 300);
+  };
+  const aplicar = (foto, s) => {
+    foto.style.backgroundPosition = `${s.x}% ${s.y}%`;
+    foto.style.transform = `scale(${s.z})`;
+  };
+
+  document.querySelectorAll(".entrega--foto").forEach((card) => {
+    const cat = card.dataset.cat;
+    const e = (SITE.entregas || []).find((x) => x.categoria === cat);
+    const foto = card.querySelector(".entrega__foto");
+    const btn = card.querySelector(".entrega__ajustar");
+    if (!e || !foto || !btn) return;
+
+    const inicial = () => estadoFoto({ ...e, categoria: "__sem_salvo__" });
+    let s = estadoFoto(e);
+    let ajustando = false, ctrl = null, img = null, arrasto = null;
+
+    const carregar = () => new Promise((ok) => {
+      if (img) return ok(img);
+      const i = new Image();
+      i.onload = () => { img = i; ok(i); };
+      i.src = foto.dataset.fundo;
+    });
+    const registrar = () => { fotos[cat] = { x: +s.x.toFixed(1), y: +s.y.toFixed(1), z: +s.z.toFixed(2) }; guardar(); };
+
+    const entrar = () => {
+      ajustando = true;
+      card.classList.add("entrega--ajustando");
+      btn.textContent = "✓ concluir";
+      ctrl = document.createElement("div");
+      ctrl.className = "entrega__ctrl";
+      ctrl.innerHTML = `<button type="button" data-z="-0.1" aria-label="Diminuir zoom">−</button>
+        <span>arraste = mover · roda do mouse = zoom</span>
+        <button type="button" data-z="0.1" aria-label="Aumentar zoom">+</button>
+        <button type="button" data-reset title="Voltar ao original">↺</button>`;
+      card.append(ctrl);
+    };
+    const sair = () => {
+      ajustando = false;
+      card.classList.remove("entrega--ajustando");
+      btn.textContent = "✥ ajustar foto";
+      ctrl?.remove(); ctrl = null;
+      registrar();
+    };
+
+    btn.addEventListener("click", (ev) => { ev.preventDefault(); ev.stopPropagation(); ajustando ? sair() : entrar(); });
+    // Enquanto ajusta, nada abre a categoria
+    card.addEventListener("click", (ev) => { if (ajustando) ev.preventDefault(); }, true);
+
+    card.addEventListener("click", (ev) => {
+      const b = ev.target.closest(".entrega__ctrl button");
+      if (!ajustando || !b) return;
+      ev.preventDefault(); ev.stopPropagation();
+      if (b.dataset.z) s.z = limitar(s.z + parseFloat(b.dataset.z), 1, 3);
+      else if ("reset" in b.dataset) s = inicial();
+      aplicar(foto, s); registrar();
+    });
+
+    card.addEventListener("wheel", (ev) => {
+      if (!ajustando) return;
+      ev.preventDefault();
+      s.z = limitar(s.z + (ev.deltaY < 0 ? 0.1 : -0.1), 1, 3);
+      aplicar(foto, s); registrar();
+    }, { passive: false });
+
+    card.addEventListener("pointerdown", async (ev) => {
+      if (!ajustando || ev.button !== 0 || ev.target.closest(".entrega__ctrl, .entrega__ajustar")) return;
+      ev.preventDefault();
+      const i = await carregar();
+      const r = card.getBoundingClientRect();
+      const escala = Math.max(r.width / i.naturalWidth, r.height / i.naturalHeight);   // escala do "cover"
+      arrasto = {
+        x: ev.clientX, y: ev.clientY, s0: { ...s },
+        ox: i.naturalWidth * escala - r.width,      // quanto da foto passa da borda (horizontal)
+        oy: i.naturalHeight * escala - r.height,    // idem, vertical
+      };
+      card.setPointerCapture(ev.pointerId);
+      card.classList.add("entrega--arrastando");
+    });
+    card.addEventListener("pointermove", (ev) => {
+      if (!arrasto) return;
+      const dx = ev.clientX - arrasto.x, dy = ev.clientY - arrasto.y;
+      // a foto acompanha o mouse (o zoom multiplica o movimento na tela)
+      if (arrasto.ox > 1) s.x = limitar(arrasto.s0.x - (dx / (arrasto.ox * s.z)) * 100, 0, 100);
+      if (arrasto.oy > 1) s.y = limitar(arrasto.s0.y - (dy / (arrasto.oy * s.z)) * 100, 0, 100);
+      aplicar(foto, s);
+    });
+    const soltar = () => {
+      if (!arrasto) return;
+      arrasto = null;
+      card.classList.remove("entrega--arrastando");
+      registrar();
+    };
+    card.addEventListener("pointerup", soltar);
+    card.addEventListener("pointercancel", soltar);
+  });
+}
+
 /* ---------- Home ---------- */
 function renderHome() {
   document.title = SITE.marca;
   $("#logo").innerHTML = logoHtml();
-  $("#title").innerHTML = fmt(SITE.titulo);
+  $("#title").innerHTML = tituloHtml(SITE.titulo);
   $("#title").dataset.editar = "titulo";
   $("#sub").innerHTML = fmt(SITE.subtitulo);
   $("#sub").dataset.editar = "subtitulo";
@@ -129,6 +258,7 @@ function renderHome() {
 
   const p = SITE.porque;
   if (p) $("#porque").innerHTML = `
+    <div class="porque__imagem" aria-hidden="true"></div>
     <div class="porque__inner">
       <p class="porque__rotulo reveal"><span>Por que ${esc(SITE.marca.split(".")[0])}?</span></p>
       <p class="porque__grego reveal" lang="el"${ed("porque.grego")}>${fmt(p.grego)}</p>
@@ -142,8 +272,11 @@ function renderHome() {
 
   $("#entregas").innerHTML = (SITE.entregas || []).map((e, i) => {
     const cat = CATEGORIAS.find((c) => c.id === e.categoria);
+    const f = estadoFoto(e);
     return `
-      <a class="entrega reveal" href="trabalhos.html?cat=${esc(e.categoria)}">
+      <a class="entrega reveal ${e.fundo ? "entrega--foto" : ""}" href="trabalhos.html?cat=${esc(e.categoria)}" data-cat="${esc(e.categoria)}">
+        ${e.fundo ? `<div class="entrega__foto" data-fundo="${esc(e.fundo)}" style="background-image:url('${esc(e.fundo)}');background-position:${f.x}% ${f.y}%;transform:scale(${f.z})"></div>` : ""}
+        ${EDITAR && e.fundo ? `<button type="button" class="entrega__ajustar">✥ ajustar foto</button>` : ""}
         <span class="entrega__cat">${esc(cat ? cat.nome : e.categoria)}</span>
         <strong class="entrega__palavra"${ed(`entregas.${i}.palavra`)}>${fmt(e.palavra)}</strong>
         <span class="entrega__texto"${ed(`entregas.${i}.texto`)}>${fmt(e.texto)}</span>
@@ -153,6 +286,7 @@ function renderHome() {
   $("#quem").innerHTML = SITE.sobre.texto.map((t, i) => `<p class="reveal"${ed(`sobre.texto.${i}`)}>${fmt(t)}</p>`).join("") +
     `<a class="pill pill--ghost reveal" href="sobre.html">Saiba mais</a>`;
   observarReveal();
+  ativarAjusteFotos();
 
   const video = $("#bgvideo");
   if (SITE.videoFundo) {
@@ -175,7 +309,7 @@ function renderFlutuantes() {
   box.innerHTML = CATEGORIAS.map((c, i) => {
     const [x, y] = salvas[c.id] || POSICOES_PADRAO[i % POSICOES_PADRAO.length];
     return `<a class="floater pill pill--light" data-id="${c.id}" href="trabalhos.html?cat=${c.id}"
-      style="left:${x}%;top:${y}%;animation-delay:${-i * 1.3}s">${esc(c.nome)}</a>`;
+      style="left:${x}%;top:${y}%;animation-delay:${-i * 1.3}s">${esc(c.nome)}${EDITAR ? `<span class="floater__alca" title="Arrastar para mover">⠿</span>` : ""}</a>`;
   }).join("");
   if (!EDITAR) return;
 
@@ -191,12 +325,13 @@ function renderFlutuantes() {
   box.querySelectorAll(".floater").forEach((el) => el.setAttribute("draggable", "false"));
   box.addEventListener("dragstart", (e) => e.preventDefault());
 
-  // Segurar o botão esquerdo e arrastar = mover. Clicar sem arrastar = abrir a categoria.
+  // Só a alcinha (⠿) inicia o arrasto — o resto do botão é clique normal, sem nenhuma interferência.
   let arrastando = null, moveu = false, inicio = null;
   box.addEventListener("pointerdown", (e) => {
-    const el = e.target.closest(".floater");
-    if (!el || e.button !== 0 || matchMedia("(max-width: 700px)").matches) return;
-    e.preventDefault();
+    const alca = e.target.closest(".floater__alca");
+    if (!alca || e.button !== 0 || matchMedia("(max-width: 700px)").matches) return;
+    e.preventDefault(); // a alça nunca navega, com ou sem arrasto
+    const el = alca.closest(".floater");
     const r = el.getBoundingClientRect();
     arrastando = el; moveu = false;
     // distância entre o mouse e o centro do botão, para ele não "pular" para o cursor
@@ -205,9 +340,8 @@ function renderFlutuantes() {
   });
   box.addEventListener("pointermove", (e) => {
     if (!arrastando) return;
-    if (!moveu && Math.hypot(e.clientX - inicio.x, e.clientY - inicio.y) < 5) return; // tremidinha = clique
     if (!moveu) {
-      // enquanto arrasta, deixa de ser link — assim soltar nunca abre a categoria
+      // primeiro movimento: tira o link, pra soltar não abrir a categoria
       inicio.href = arrastando.getAttribute("href");
       arrastando.removeAttribute("href");
     }
@@ -233,8 +367,10 @@ function renderFlutuantes() {
   };
   box.addEventListener("pointerup", soltar);
   box.addEventListener("pointercancel", soltar);
-  // Se arrastou, não abre o link
-  box.addEventListener("click", (e) => { if (moveu) { e.preventDefault(); moveu = false; } });
+  // Clique na alça, ou que veio de um arrasto, nunca abre o link
+  box.addEventListener("click", (e) => {
+    if (e.target.closest(".floater__alca") || moveu) { e.preventDefault(); moveu = false; }
+  });
 }
 
 /* ---------- Trabalhos ---------- */
@@ -298,6 +434,15 @@ function ativarPrevia(grid) {
   });
 }
 
+// Intercala vários grupos: 1 de cada, depois mais 1 de cada... (dá pra ver vários clientes antes de escolher)
+function intercalar(grupos) {
+  const out = [];
+  for (let i = 0; grupos.some((g) => i < g.length); i++) {
+    for (const g of grupos) if (i < g.length) out.push(g[i]);
+  }
+  return out;
+}
+
 function renderTrabalhos() {
   const params = new URLSearchParams(location.search);
   let cat = params.get("cat");
@@ -321,10 +466,12 @@ function renderTrabalhos() {
 
   function desenhar() {
     const doCat = todos.filter((p) => p.categoria === cat);
-    const lista = doCat
-      .flatMap((p) => p.itens.map((item) => ({ cliente: p.titulo, ano: p.ano, redes: p.redes, item })))
-      .filter((v) => EDITAR || !ocultos.has(chave(v.item)));
-    videos = cliente ? lista.filter((v) => v.cliente === cliente) : lista;
+    // Um grupo por cliente, na ordem de cada um; "Todos" intercala (1 de cada, depois mais 1 de cada...)
+    const porCliente = doCat.map((p) =>
+      p.itens.map((item) => ({ cliente: p.titulo, ano: p.ano, redes: p.redes, item }))
+        .filter((v) => EDITAR || !ocultos.has(chave(v.item))));
+    const lista = intercalar(porCliente);
+    videos = cliente ? porCliente.flat().filter((v) => v.cliente === cliente) : lista;
     const visiveis = (arr) => arr.filter((v) => !ocultos.has(chave(v.item))).length;
 
     filtro.innerHTML = doCat.length > 1

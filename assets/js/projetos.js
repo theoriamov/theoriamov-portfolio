@@ -1,6 +1,84 @@
 /* GERADO AUTOMATICAMENTE por atualizar.py — não edite à mão. */
 const PROJETOS = [
   {
+    "categoria": "influencers",
+    "titulo": "7x7 Allan",
+    "ano": "",
+    "capa": "assets/midia/influencers/7x7-allan/00-da8h9p3awpl-thumb.jpg",
+    "redes": {
+      "instagram": "https://www.instagram.com/7x7allan/",
+      "canal": "https://www.youtube.com/@7x7allan"
+    },
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/00-da8h9p3awpl.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/00-da8h9p3awpl-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/00-dab5znxn5j6.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/00-dab5znxn5j6-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/00-dbzfjszu551.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/00-dbzfjszu551-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/00-dw7kgzqjnup.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/00-dw7kgzqjnup-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/00-dwmrtnndog3.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/00-dwmrtnndog3-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/00-dxnshmqjr2l.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/00-dxnshmqjr2l-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/15-ddb77zcu0z.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/15-ddb77zcu0z-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/23-dczjw96ulhs.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/23-dczjw96ulhs-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/24-dcwq8k5oqd0.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/24-dcwq8k5oqd0-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/25-dct-2-dovs8.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/25-dct-2-dovs8-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/influencers/7x7-allan/26-dco4vzgoud5.mp4",
+        "poster": "assets/midia/influencers/7x7-allan/26-dco4vzgoud5-thumb.jpg",
+        "vertical": true
+      }
+    ]
+  },
+  {
     "categoria": "youtube",
     "titulo": "7x7 Allan",
     "ano": "",
@@ -42,11 +120,6 @@ const PROJETOS = [
       },
       {
         "tipo": "youtube",
-        "id": "6F3IjxASXVA",
-        "titulo": "ROLEX, RELÓGIOS E POLÊMICAS: UMA RESENHA COM RODRIGO GÓES E COMENDADOR DO TEMPO!"
-      },
-      {
-        "tipo": "youtube",
         "id": "AUejQocAApI",
         "titulo": "5 RELÓGIOS PARA TROCAR O SMARTWATCH E COMEÇAR UMA COLEÇÃO! (CUSTO-BENEFÍCIO)"
       },
@@ -62,53 +135,13 @@ const PROJETOS = [
       },
       {
         "tipo": "youtube",
-        "id": "o2iSSKtgqeI",
-        "titulo": "VENDI MINHA BMW E COMPREI UM BYD SEAL! 🚗⚡ (AGORA É OFICIAL)"
-      },
-      {
-        "tipo": "youtube",
-        "id": "rlh-Pmjh3rg",
-        "titulo": "COLEÇÃO DE RELÓGIOS CHINESES QUE NÃO SÃO CÓPIAS (HOMAGE)"
-      },
-      {
-        "tipo": "youtube",
-        "id": "xyPD3UkMe5A",
-        "titulo": "TISSOT vs MIDO: AS DIFERENÇAS QUE NINGUÉM TE CONTA! (VOCÊ VAI SE SURPREENDER!)"
-      },
-      {
-        "tipo": "youtube",
-        "id": "fR-1Sz2qlPI",
-        "titulo": "NELSON PIQUET: RELÓGIOS, OLD MONEY E A GARAGEM MAIS LENDÁRIA DO BRASIL!"
-      },
-      {
-        "tipo": "youtube",
-        "id": "OMh8dUULhCA",
-        "titulo": "RELÓGIO DE GRIFE VALE A PENA? A VERDADE SOBRE FASHION WATCHES!"
-      },
-      {
-        "tipo": "youtube",
         "id": "22owFuBaF3M",
         "titulo": "COLEÇÃO DE CASIO COM CUSTO BENEFÍCIO QUE VALEM MUITO A PENA EM 2026!"
       },
       {
         "tipo": "youtube",
-        "id": "J15seDDVAPQ",
-        "titulo": "GUSTAVO MIOTO: QUAL RELÓGIO ENTRA NA COLEÇÃO? ROLEX, PATEK OU CARTIER?"
-      },
-      {
-        "tipo": "youtube",
-        "id": "QI4hPeXzZJQ",
-        "titulo": "AS COLLABS DE RELÓGIOS MAIS INSANAS JÁ FEITAS!"
-      },
-      {
-        "tipo": "youtube",
         "id": "qVBhXr8ofSk",
         "titulo": "AS MELHORES MARCAS DE RELÓGIO QUE QUASE NINGUÉM CONHECE NO BRASIL!"
-      },
-      {
-        "tipo": "youtube",
-        "id": "F9wFxIEhYJk",
-        "titulo": "O RELÓGIO QUE TODO FÃ DE AUTOMOBILISMO VAI QUERER!"
       },
       {
         "tipo": "youtube",
@@ -122,33 +155,8 @@ const PROJETOS = [
       },
       {
         "tipo": "youtube",
-        "id": "xkl5UK1jfHg",
-        "titulo": "RELÓGIO TOP, CARRO DE 965CV E TECNOLOGIA INSANA!"
-      },
-      {
-        "tipo": "youtube",
-        "id": "LM4y2q3IOvE",
-        "titulo": "6 CRONÓGRAFOS BARATOS QUE VALem MUITO A PENA EM 2026!"
-      },
-      {
-        "tipo": "youtube",
-        "id": "X1LaReQefjs",
-        "titulo": "DE PANERAI A PATEK PHILIPPE E RICHARD MILLE: OS RELÓGIOS DOS MILIONÁRIOS"
-      },
-      {
-        "tipo": "youtube",
         "id": "qtKXjwnATMw",
         "titulo": "5 DIVERS BARATOS QUE VALem MUITO A PENA EM 2026!"
-      },
-      {
-        "tipo": "youtube",
-        "id": "aCkn3EkvQLQ",
-        "titulo": "VISITAMOS A NORQAIN NA WATCHES AND WONDERS 2026 COM PEDRO PIQUET!"
-      },
-      {
-        "tipo": "youtube",
-        "id": "pCc_TqdSkWM",
-        "titulo": "Você NÃO precisa de muitos relógios (e eu vou te provar)"
       },
       {
         "tipo": "youtube",
@@ -157,18 +165,8 @@ const PROJETOS = [
       },
       {
         "tipo": "youtube",
-        "id": "3tPMOg_NgmM",
-        "titulo": "Daily Vlog na Watch and Wonders | bastidores, impressões"
-      },
-      {
-        "tipo": "youtube",
         "id": "Ihifdl1_ubw",
         "titulo": "A maior mentira que te contam sobre relógios (cuidado com isso)"
-      },
-      {
-        "tipo": "youtube",
-        "id": "9f3tJGW9xeo",
-        "titulo": "Você só precisa de 3 relógios (e eu vou te provar)"
       },
       {
         "tipo": "youtube",
@@ -182,23 +180,8 @@ const PROJETOS = [
       },
       {
         "tipo": "youtube",
-        "id": "V8WCAGAASs0",
-        "titulo": "Relógios que eu realmente usaria | minha coleção para dia a dia e trabalho"
-      },
-      {
-        "tipo": "youtube",
         "id": "7GdBsRhgP6M",
         "titulo": "Relógios Pequenos Estão Voltando? O Tamanho do Relógio Realmente Importa?"
-      },
-      {
-        "tipo": "youtube",
-        "id": "ZJh0Fvww2mQ",
-        "titulo": "MONTANDO UMA COLEÇÃO DE RELÓGIOS COM MENOS DE 5 MIL REAIS"
-      },
-      {
-        "tipo": "youtube",
-        "id": "jSL8X6cvxBg",
-        "titulo": "A Minha Coleção Perfeita de Seiko, 4 Relógios Que Resolvem Tudo"
       },
       {
         "tipo": "youtube",
@@ -209,116 +192,6 @@ const PROJETOS = [
         "tipo": "youtube",
         "id": "7e7fsxeJjM8",
         "titulo": "SEIKO: Entenda os Níveis da Marca | Do Seiko 5 ao Seiko Luxo"
-      },
-      {
-        "tipo": "youtube",
-        "id": "TiYsduBqods",
-        "titulo": "Uma Coleção de Relógios Clássicos com Mostradores Pretos"
-      },
-      {
-        "tipo": "youtube",
-        "id": "uJOhYFwk7nU",
-        "titulo": "Construindo uma Coleção de 5 Relógios"
-      },
-      {
-        "tipo": "youtube",
-        "id": "prWhKvx-1l8",
-        "titulo": "Rolex, Direito e Poder: Um Papo Que Vai Além dos Relógios"
-      },
-      {
-        "tipo": "youtube",
-        "id": "t_XxmcTJriA",
-        "titulo": "Uma Coleção com 5 Relógios Que Resolvem Tudo"
-      },
-      {
-        "tipo": "youtube",
-        "id": "7spJYT8M8Z8",
-        "titulo": "Minha Coleção de Relógios: Os que Mais Uso 2026"
-      },
-      {
-        "tipo": "youtube",
-        "id": "mROL1DSoHPg",
-        "titulo": "7 ERROS PRA EVITAR AO COMEÇAR SUA COLEÇÃO DE RELÓGIOS"
-      },
-      {
-        "tipo": "youtube",
-        "id": "NEiHQyKupHU",
-        "titulo": "PRA QUE SERVEM as Características dos Relógios? Vidro Safira, Coroa Rosqueada, Hacking... 🤔"
-      },
-      {
-        "tipo": "youtube",
-        "id": "-9Mt10UtK5Q",
-        "titulo": "A COLEÇÃO DE ROLEX DO ROGER FEDERER: POR QUE É INCRÍVEL?"
-      },
-      {
-        "tipo": "youtube",
-        "id": "voOVQdQwrjk",
-        "titulo": "Custo-Benefício Real: Qual Relógio Vale a Pena em Cada Faixa de Preço?"
-      },
-      {
-        "tipo": "youtube",
-        "id": "_oBUrSN0Lyo",
-        "titulo": "Como Escolher Seu Primeiro Relógio: O Melhor Custo-Benefício"
-      },
-      {
-        "tipo": "youtube",
-        "id": "9sz17nNWeTY",
-        "titulo": "A VERDADE sobre SEIKO que ninguém te conta #seiko"
-      },
-      {
-        "tipo": "youtube",
-        "id": "-PE96v7amZU",
-        "titulo": "5 Relógios para SUA COLEÇÃO em 2025"
-      },
-      {
-        "tipo": "youtube",
-        "id": "spN6dL4uIG4",
-        "titulo": "A VERDADE sobre o NOVO Seiko 5 que NINGUÉM está falando"
-      },
-      {
-        "tipo": "youtube",
-        "id": "nw_RBW3Js00",
-        "titulo": "REAGINDO À COLEÇÃO DE RELÓGIOS DO TALLIS GOMES E FELIPE TITTO"
-      },
-      {
-        "tipo": "youtube",
-        "id": "azYOcVCQi7k",
-        "titulo": "RELÓGIOS NOVOS na Coleção! Um Deles Já é IMPOSSÍVEL de Achar 🚨"
-      },
-      {
-        "tipo": "youtube",
-        "id": "2YplK33BsVs",
-        "titulo": "ORIENT vs CASIO: A VERDADE que as MARCAS ESCONDEM! 😱"
-      },
-      {
-        "tipo": "youtube",
-        "id": "kTM6lkzy_OI",
-        "titulo": "REAGINDO À COLEÇÃO DE RELÓGIOS DO RENATO CARIANI E TIAGO TCAR - QUANTO CUSTA? 😱"
-      },
-      {
-        "tipo": "youtube",
-        "id": "nSoRsB2H7T0",
-        "titulo": "Bem Vindo ao Canal 7x7  - Allan Lopez"
-      },
-      {
-        "tipo": "youtube",
-        "id": "sdWftddRPGM",
-        "titulo": "CASIO vs SEIKO: Qual Comprar em 2025? A VERDADE!"
-      },
-      {
-        "tipo": "youtube",
-        "id": "WtHBEJN7JsY",
-        "titulo": "5 Relógios BARATOS Usados Por Celebridades Milionárias (o do Obama custa R$150!)"
-      },
-      {
-        "tipo": "youtube",
-        "id": "sl0imVedXWg",
-        "titulo": "Orient vs Seiko: As 7 DIFERENÇAS que Ninguém Te Conta (Você Vai Se Surpreender!)"
-      },
-      {
-        "tipo": "youtube",
-        "id": "OaMCqVbU7HM",
-        "titulo": "OS 5 MELHORES RELÓGIOS ATÉ 2 MIL REAIS EM 2025"
       }
     ]
   },
@@ -358,33 +231,87 @@ const PROJETOS = [
       },
       {
         "tipo": "video",
-        "src": "assets/midia/empresarial/bluemetrix/02-daeplayoexw.mp4",
-        "poster": "assets/midia/empresarial/bluemetrix/02-daeplayoexw-thumb.jpg",
-        "vertical": true
-      },
-      {
-        "tipo": "video",
-        "src": "assets/midia/empresarial/bluemetrix/03-dy0fx2soig.mp4",
-        "poster": "assets/midia/empresarial/bluemetrix/03-dy0fx2soig-thumb.jpg",
-        "vertical": false
-      },
-      {
-        "tipo": "video",
-        "src": "assets/midia/empresarial/bluemetrix/04-dypzwndix-n.mp4",
-        "poster": "assets/midia/empresarial/bluemetrix/04-dypzwndix-n-thumb.jpg",
-        "vertical": true
-      },
-      {
-        "tipo": "video",
         "src": "assets/midia/empresarial/bluemetrix/05-dykv9weokte.mp4",
         "poster": "assets/midia/empresarial/bluemetrix/05-dykv9weokte-thumb.jpg",
         "vertical": true
       },
       {
         "tipo": "video",
-        "src": "assets/midia/empresarial/bluemetrix/06-dyifqogihw6.mp4",
-        "poster": "assets/midia/empresarial/bluemetrix/06-dyifqogihw6-thumb.jpg",
-        "vertical": false
+        "src": "assets/midia/empresarial/bluemetrix/08-dwy-2nyjjua.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/08-dwy-2nyjjua-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/09-dwxr1ptiely.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/09-dwxr1ptiely-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/10-dwcu-m5dwks.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/10-dwcu-m5dwks-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/11-dv-guizjoft.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/11-dv-guizjoft-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/12-dvrkgt2gqla.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/12-dvrkgt2gqla-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/15-dulo-dtjgnu.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/15-dulo-dtjgnu-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/17-dtves6xdnqe.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/17-dtves6xdnqe-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/18-dti0ltyksks.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/18-dti0ltyksks-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/21-drcucu-jxve.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/21-drcucu-jxve-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/22-drkxspsdbpj.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/22-drkxspsdbpj-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/23-dqmymauehb1.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/23-dqmymauehb1-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/24-dqzmxhueb-e.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/24-dqzmxhueb-e-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/bluemetrix/29-dpojjdujds8.mp4",
+        "poster": "assets/midia/empresarial/bluemetrix/29-dpojjdujds8-thumb.jpg",
+        "vertical": true
       }
     ]
   },
@@ -434,6 +361,210 @@ const PROJETOS = [
     ]
   },
   {
+    "categoria": "empresarial",
+    "titulo": "Grupo Capital",
+    "ano": "",
+    "capa": "assets/midia/empresarial/grupo-capital/01-dwy2hinggqt-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/01-dwy2hinggqt.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/01-dwy2hinggqt-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/07-dvgjux-amtm.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/07-dvgjux-amtm-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/09-dvyoo4tk5ry.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/09-dvyoo4tk5ry-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/10-du3elwvkwe3.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/10-du3elwvkwe3-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/13-dts8nb-e-th.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/13-dts8nb-e-th-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/14-dtfbhf-e9bv.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/14-dtfbhf-e9bv-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/16-ds71u84glrl.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/16-ds71u84glrl-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/17-dssujadk1tw.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/17-dssujadk1tw-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/19-dsf73y-k4ht.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/19-dsf73y-k4ht-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/20-dr5bcj0exxe.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/20-dr5bcj0exxe-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/21-drhyuqxebwv.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/21-drhyuqxebwv-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/24-dqwkg3xeyum.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/24-dqwkg3xeyum-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/25-dqmtwahe9sy.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/25-dqmtwahe9sy-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/26-dqcicmlk7zs.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/26-dqcicmlk7zs-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/29-dpmfo2teqri.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/29-dpmfo2teqri-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/30-do-sylper86.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/30-do-sylper86-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/grupo-capital/33-dod29q-evav.mp4",
+        "poster": "assets/midia/empresarial/grupo-capital/33-dod29q-evav-thumb.jpg",
+        "vertical": true
+      }
+    ]
+  },
+  {
+    "categoria": "empresarial",
+    "titulo": "Lótus Contabilidade",
+    "ano": "",
+    "capa": "assets/midia/empresarial/lotus-contabilidade/01-dafzv0pboxo-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/01-dafzv0pboxo.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/01-dafzv0pboxo-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/02-davcggzbifg.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/02-davcggzbifg-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/03-dzz-8ssbkcm.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/03-dzz-8ssbkcm-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/04-dyps1z9h4rz.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/04-dyps1z9h4rz-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/08-dyagfqzhyvv.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/08-dyagfqzhyvv-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/14-dvoj4-njzue.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/14-dvoj4-njzue-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/23-dtvzyuxkuwa.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/23-dtvzyuxkuwa-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/24-dtnrb3pj-oy.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/24-dtnrb3pj-oy-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/26-ds7p3yzey7z.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/26-ds7p3yzey7z-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/27-dsxws2oj4x2.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/27-dsxws2oj4x2-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/28-dspotvdfodi.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/28-dspotvdfodi-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/29-dsfvhdzjcct.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/29-dsfvhdzjcct-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/30-dsxmfuhj07p.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/30-dsxmfuhj07p-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/empresarial/lotus-contabilidade/31-dsdazdjjszi.mp4",
+        "poster": "assets/midia/empresarial/lotus-contabilidade/31-dsdazdjjszi-thumb.jpg",
+        "vertical": true
+      }
+    ]
+  },
+  {
     "categoria": "youtube",
     "titulo": "Mesa do Tempo",
     "ano": "",
@@ -459,31 +590,6 @@ const PROJETOS = [
       },
       {
         "tipo": "youtube",
-        "id": "hPg8CHKqhLI",
-        "titulo": "Relógios de Entrada Valem a Pena? #13"
-      },
-      {
-        "tipo": "youtube",
-        "id": "VvY3sAYGY7E",
-        "titulo": "TIER LIST DEFINITIVO da ROLEX! 💥 QUAL modelo merece estar no topo? #12"
-      },
-      {
-        "tipo": "youtube",
-        "id": "4sWA0B8KHL8",
-        "titulo": "R$ 1 MILHÃO EM RELÓGIOS: 3 Coleções ÉPICAS Reveladas! 🔥 #11"
-      },
-      {
-        "tipo": "youtube",
-        "id": "K7RthK3BIMo",
-        "titulo": "ROLEX vs PATEK vs AP: QUAL O MAIS AMADO E MAIS ODIADO? 🔥 | Mesa do Tempo #10"
-      },
-      {
-        "tipo": "youtube",
-        "id": "e5ll2GOlv30",
-        "titulo": "NELSON PIQUET na Mesa do Tempo: ÁGIOS MILIONÁRIOS! 🏆 | Mesa do Tempo #09"
-      },
-      {
-        "tipo": "youtube",
         "id": "gZ1qXmJvH7c",
         "titulo": "Montamos a Coleção Perfeita com Só 3 Relógios! Qual Você Escolheria? | Mesa do Tempo #08"
       },
@@ -494,33 +600,215 @@ const PROJETOS = [
       },
       {
         "tipo": "youtube",
-        "id": "6hAWnABpv8A",
-        "titulo": "De R$ 1.000 ao Infinito: Qual Seria a Sua Coleção Perfeita de Relógios? Mesa do Tempo #06"
-      },
-      {
-        "tipo": "youtube",
-        "id": "JdE1N-qqgww",
-        "titulo": "Qual o Relógio Ideal para Cada Profissão? | Mesa do Tempo #5"
-      },
-      {
-        "tipo": "youtube",
-        "id": "f5aafyhtwiI",
-        "titulo": "Nossa Wishlist de Relógios: Rolex, Patek, Audemars Piguet Mesa do Tempo #4"
-      },
-      {
-        "tipo": "youtube",
-        "id": "Rc6BVZU321M",
-        "titulo": "Direto da Suíça: Watches and Wonders com Rolex, Patek e Vacheron Mesa do Tempo #3"
-      },
-      {
-        "tipo": "youtube",
         "id": "0f0eUrc44Rg",
         "titulo": "Relógios Caros x Baratos + Super Bowl e Polêmicas da Semana Mesa do Tempo #2"
+      }
+    ]
+  },
+  {
+    "categoria": "gastronomico",
+    "titulo": "Nerdsburguer",
+    "ano": "",
+    "capa": "assets/midia/gastronomico/nerdsburguer/01-da5fz2dri3e-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/01-da5fz2dri3e.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/01-da5fz2dri3e-thumb.jpg",
+        "vertical": true
       },
       {
-        "tipo": "youtube",
-        "id": "xraNdT7LEUg",
-        "titulo": "Como Começou Nossa Paixão por Relógios Mesa do Tempo #1"
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/02-dak6l1yxpiy.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/02-dak6l1yxpiy-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/04-dwzr2ifkw25.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/04-dwzr2ifkw25-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/05-dwmqjcfkcol.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/05-dwmqjcfkcol-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/06-dwhe9kugo5k.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/06-dwhe9kugo5k-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/07-dvorryddq1e.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/07-dvorryddq1e-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/08-dvegb9rechr.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/08-dvegb9rechr-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/09-dvpcjy2edt7.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/09-dvpcjy2edt7-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/10-duqxyhjaonj.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/10-duqxyhjaonj-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/11-duqppr0afaf.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/11-duqppr0afaf-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/12-dt-hxwfeuyk.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/12-dt-hxwfeuyk-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/13-dt3b173etlo.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/13-dt3b173etlo-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/14-dtgsivaeehn.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/14-dtgsivaeehn-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/15-dsxlpwggjd2.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/15-dsxlpwggjd2-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/16-dsoludagbeq.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/16-dsoludagbeq-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/17-drw-jqnalah.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/17-drw-jqnalah-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/18-drkgnm1gcyt.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/18-drkgnm1gcyt-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/19-drjyigkactc.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/19-drjyigkactc-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/20-drebqegamww.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/20-drebqegamww-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/21-drkgbxmgoes.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/21-drkgbxmgoes-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/22-dqt8cjfamlu.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/22-dqt8cjfamlu-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/23-dqpo-8ikylg.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/23-dqpo-8ikylg-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/24-dqhas6yai1p.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/24-dqhas6yai1p-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/25-dp3-cwmgadu.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/25-dp3-cwmgadu-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/26-dpwmdn9al02.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/26-dpwmdn9al02-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/27-dpe7k7bcanf.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/27-dpe7k7bcanf-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/28-dpzmj-ucem.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/28-dpzmj-ucem-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/29-dpbn6cnap7i.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/29-dpbn6cnap7i-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/30-dn6pf9mkvqf.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/30-dn6pf9mkvqf-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/31-dngc55eutck.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/31-dngc55eutck-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/32-dngr5ceudvv.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/32-dngr5ceudvv-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/33-dmbrpsau-fx.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/33-dmbrpsau-fx-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/nerdsburguer/34-dl5dc9yongb.mp4",
+        "poster": "assets/midia/gastronomico/nerdsburguer/34-dl5dc9yongb-thumb.jpg",
+        "vertical": true
       }
     ]
   }

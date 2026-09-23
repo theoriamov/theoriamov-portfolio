@@ -3,8 +3,7 @@
 /midia/
 
 # Listas de trabalho (notas internas, não fazem parte do site)
-lista.txt
-lista-intervalos.txt
+lista*.txt
 
 # Lixo comum
 __pycache__/
