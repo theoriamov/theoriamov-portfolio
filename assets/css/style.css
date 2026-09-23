@@ -100,7 +100,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: relative;
   width: min(900px, 100% - 2 * var(--gutter));
   text-align: center;
-  padding: 120px 0;
+  padding: 160px 0 120px;   /* zona de cima maior: é onde ficam as nuvens acima do título */
 }
 .hero__title {
   font-family: var(--font-display);
@@ -184,8 +184,10 @@ html { scroll-behavior: smooth; }
 @media (max-width: 700px) { .floater__alca { display: none; } }
 
 @media (max-width: 700px) {
-  .hero__content { padding: 230px 0 210px; }
-  .floater { font-size: .66rem; padding: .6em 1em; }   /* nuvens um pouco menores no celular */
+  .hero__content { padding: 230px 0 150px; }
+  .floater { font-size: .6rem; padding: .55em .85em; letter-spacing: .06em; }   /* nuvens menores no celular */
+  .hero__title .palavra-move { display: table; margin: 0 auto; }   /* "MOVEM" sempre na 2ª linha */
+  @keyframes float { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
 }
 
 /* ---------- Home: Por que tHeorIA? ---------- */

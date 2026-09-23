@@ -304,22 +304,41 @@ function renderHome() {
    No modo de edição (localhost) dá para arrastar no computador; salva em posicoes.js. */
 const POS_COMPUTADOR = {
   empresarial: [12, 12], eventos: [38, 5], "video-com-ia": [64, 11], gastronomico: [88, 15],
-  influencers: [3, 63], youtube: [97, 63],
+  // Nos lados dos botões, onde há espaço livre. O 3º valor "b" = altura em px medida a partir de baixo do bloco
+  // (assim acompanha os botões em qualquer tamanho de tela).
+  influencers: [9, 150, "b"], youtube: [91, 138, "b"],
 };
-const POS_CELULAR = {   // em cima (duas fileiras, abaixo do cabeçalho) e embaixo dos botões
-  empresarial: [26, 13], eventos: [74, 14.5], gastronomico: [30, 21.5], "video-com-ia": [72, 22.5],
-  influencers: [30, 80], youtube: [70, 84.6],
+// Celular: as nuvens formam um círculo em volta do título ("HISTÓRIAS QUE SE" / "MOVEM").
+// Valores = [distância do centro em px (− esquerda, + direita), altura em px a partir do topo do bloco].
+// O título começa a 230px do topo e tem 2 linhas (~79px), então: 200 = acima, 150 = fileira de cima, 296 = ao lado de "MOVEM".
+const POS_CELULAR = {
+  empresarial: [-97, 200],      // diagonal, ao lado do "H" de HISTÓRIAS
+  eventos: [104, 206],          // diagonal, ao lado do "SE"
+  gastronomico: [-72, 150],     // fileira de cima, fechando o arco
+  "video-com-ia": [70, 152],
+  influencers: [-122, 304],     // abaixo de HISTÓRIAS, à esquerda de MOVEM
+  youtube: [114, 298],          // abaixo de SE, à direita de MOVEM
 };
 const ehCelular = () => matchMedia("(max-width: 700px)").matches;
+// Girou o celular / redimensionou a janela passando do limite: refaz o arranjo
+matchMedia("(max-width: 700px)").addEventListener("change", () => {
+  if (document.body.dataset.page === "home") location.reload();
+});
 
 function renderFlutuantes() {
   const box = $("#floaters");
   const salvas = typeof POSICOES === "undefined" ? {} : { ...POSICOES };
   box.innerHTML = CATEGORIAS.map((c, i) => {
     const padrao = (ehCelular() ? POS_CELULAR : POS_COMPUTADOR)[c.id] || [50, 50];
-    const [x, y] = (!ehCelular() && salvas[c.id]) || padrao;
+    let esq, topo;
+    if (ehCelular()) {
+      esq = `calc(50% + ${padrao[0]}px)`; topo = `${padrao[1]}px`;
+    } else {
+      const [x, y, ancora] = salvas[c.id] || padrao;
+      esq = `${x}%`; topo = ancora === "b" ? `calc(100% - ${y}px)` : `${y}%`;
+    }
     return `<a class="floater pill pill--light" data-id="${c.id}" href="trabalhos.html?cat=${c.id}"
-      style="left:${x}%;top:${y}%;animation-delay:${-i * 1.3}s">${esc(c.nome)}${EDITAR ? `<span class="floater__alca" title="Arrastar para mover">⠿</span>` : ""}</a>`;
+      style="left:${esq};top:${topo};animation-delay:${-i * 1.3}s">${esc(c.nome)}${EDITAR ? `<span class="floater__alca" title="Arrastar para mover">⠿</span>` : ""}</a>`;
   }).join("");
   if (!EDITAR) return;
 
