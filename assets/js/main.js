@@ -308,24 +308,58 @@ const POS_COMPUTADOR = {
   // (assim acompanha os botões em qualquer tamanho de tela).
   influencers: [9, 150, "b"], youtube: [91, 138, "b"],
 };
-const POS_CELULAR = {   // em cima (duas fileiras, abaixo do cabeçalho) e embaixo dos botões
-  empresarial: [26, 13], eventos: [74, 14.5], gastronomico: [30, 21.5], "video-com-ia": [72, 22.5],
-  influencers: [30, 80], youtube: [70, 84.6],
+/* Celular: as nuvens formam uma "volta" em torno do título e do parágrafo (2 em cima, 2 nas laterais do título
+   inclinadas na diagonal, 2 embaixo do parágrafo). A altura é medida a partir de um ponto de referência:
+   "t" = px a partir do topo do bloco · "titulo" = centro do título · "sub" = base do parágrafo. */
+const POS_CELULAR = {
+  gastronomico:   { x: 30, y: 190, ancora: "t",      rot: 0 },
+  "video-com-ia": { x: 68, y: 198, ancora: "t",      rot: 0 },
+  empresarial:    { x: 3,  y: 0,   ancora: "titulo", rot: -70 },
+  eventos:        { x: 97, y: 0,   ancora: "titulo", rot: 70 },
+  influencers:    { x: 19, y: 28,  ancora: "sub",    rot: 12 },
+  youtube:        { x: 84, y: 28,  ancora: "sub",    rot: -12 },
 };
 const ehCelular = () => matchMedia("(max-width: 700px)").matches;
+
+// Calcula o "top" (em px) de uma nuvem do celular a partir da referência dela
+function topoCelular(cfg) {
+  const palco = $(".hero__content").getBoundingClientRect();
+  if (cfg.ancora === "titulo") { const r = $("#title").getBoundingClientRect(); return r.top + r.height / 2 - palco.top + cfg.y; }
+  if (cfg.ancora === "sub") return $("#sub").getBoundingClientRect().bottom - palco.top + cfg.y;
+  return cfg.y;
+}
+function reposicionarCelular() {
+  if (!ehCelular()) return;
+  document.querySelectorAll(".floater").forEach((el) => {
+    const cfg = POS_CELULAR[el.dataset.id];
+    if (cfg) el.style.top = `${topoCelular(cfg)}px`;
+  });
+}
 
 function renderFlutuantes() {
   const box = $("#floaters");
   const salvas = typeof POSICOES === "undefined" ? {} : { ...POSICOES };
   const giros = typeof ROTACOES === "undefined" ? {} : { ...ROTACOES };   // ângulo (graus) de cada nuvem
+  const celular = ehCelular();
   box.innerHTML = CATEGORIAS.map((c, i) => {
-    const padrao = (ehCelular() ? POS_CELULAR : POS_COMPUTADOR)[c.id] || [50, 50];
-    const [x, y, ancora] = (!ehCelular() && salvas[c.id]) || padrao;
-    const topo = ancora === "b" ? `calc(100% - ${y}px)` : `${y}%`;
-    const giro = ehCelular() ? 0 : giros[c.id] || 0;
+    let x, topo, giro;
+    if (celular) {
+      const cfg = POS_CELULAR[c.id] || { x: 50, y: 50, ancora: "t", rot: 0 };
+      x = cfg.x; topo = `${topoCelular(cfg)}px`; giro = cfg.rot;
+    } else {
+      const [px, y, ancora] = salvas[c.id] || POS_COMPUTADOR[c.id] || [50, 50];
+      x = px; topo = ancora === "b" ? `calc(100% - ${y}px)` : `${y}%`; giro = giros[c.id] || 0;
+    }
     return `<a class="floater pill pill--light" data-id="${c.id}" href="trabalhos.html?cat=${c.id}"
       style="left:${x}%;top:${topo};--rot:${giro}deg;animation-delay:${-i * 1.3}s">${esc(c.nome)}${EDITAR ? `<span class="floater__alca" title="Arrastar para mover">⠿</span><span class="floater__giro" title="Arraste para girar (Shift = de 15 em 15°). Duplo clique zera">↻</span>` : ""}</a>`;
   }).join("");
+  if (celular) {
+    // as fontes carregam depois e mudam a altura do texto: recalcula. Também ao girar/redimensionar a tela.
+    document.fonts?.ready.then(reposicionarCelular);
+    window.addEventListener("resize", reposicionarCelular);
+  }
+  // Passou do computador para o celular (ou vice-versa): recarrega para montar o layout certo
+  matchMedia("(max-width: 700px)").addEventListener("change", () => location.reload());
   if (!EDITAR) return;
 
   box.classList.add("floaters--editar");

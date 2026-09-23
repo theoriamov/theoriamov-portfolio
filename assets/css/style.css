@@ -197,8 +197,9 @@ html { scroll-behavior: smooth; }
 @media (max-width: 700px) { .floater__alca, .floater__giro { display: none; } }
 
 @media (max-width: 700px) {
-  .hero__content { padding: 230px 0 210px; }
-  .floater { font-size: .66rem; padding: .6em 1em; }   /* nuvens um pouco menores no celular */
+  .hero__content { padding: 230px 0 150px; }
+  .floater { font-size: .6rem; padding: .55em .9em; }   /* nuvens um pouco menores no celular */
+  .hero__sub { margin-bottom: 3.6rem; }                  /* espaço para as 2 nuvens embaixo do parágrafo */
 }
 
 /* ---------- Home: Por que tHeorIA? ---------- */
