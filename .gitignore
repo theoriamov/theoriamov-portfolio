@@ -1,0 +1,13 @@
+# Vídeos e fotos originais (não convertidos) — não precisam ir para o site publicado
+# (a barra no início evita que isso pegue também assets/midia, que É o site)
+/midia/
+
+# Listas de trabalho (notas internas, não fazem parte do site)
+lista.txt
+lista-intervalos.txt
+
+# Lixo comum
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
