@@ -307,6 +307,7 @@ const POS_COMPUTADOR = {
   // Nos lados dos botões, onde há espaço livre. O 3º valor "b" = altura em px medida a partir de baixo do bloco
   // (assim acompanha os botões em qualquer tamanho de tela).
   influencers: [9, 150, "b"], youtube: [91, 138, "b"],
+  "motion-graphics": [47, 5],
 };
 /* Celular: as nuvens formam uma "volta" em torno do título e do parágrafo (2 em cima, 2 nas laterais do título
    inclinadas na diagonal, 2 embaixo do parágrafo). A altura é medida a partir de um ponto de referência:
@@ -318,6 +319,7 @@ const POS_CELULAR = {
   eventos:        { x: 97, y: 0,   ancora: "titulo", rot: 70 },
   influencers:    { x: 19, y: 28,  ancora: "sub",    rot: 12 },
   youtube:        { x: 84, y: 28,  ancora: "sub",    rot: -12 },
+  "motion-graphics": { x: 50, y: 150, ancora: "t",    rot: 0 },
 };
 const ehCelular = () => matchMedia("(max-width: 700px)").matches;
 
@@ -341,7 +343,7 @@ function renderFlutuantes() {
   const salvas = typeof POSICOES === "undefined" ? {} : { ...POSICOES };
   const giros = typeof ROTACOES === "undefined" ? {} : { ...ROTACOES };   // ângulo (graus) de cada nuvem
   const celular = ehCelular();
-  box.innerHTML = CATEGORIAS.filter((c) => !c.semNuvem).map((c, i) => {
+  box.innerHTML = CATEGORIAS.map((c, i) => {
     let x, topo, giro;
     if (celular) {
       const cfg = POS_CELULAR[c.id] || { x: 50, y: 50, ancora: "t", rot: 0 };

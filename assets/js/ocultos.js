@@ -67,6 +67,7 @@ const OCULTOS = [
   "assets/midia/influencers/7x7-allan/10-ddjq4apurr5.mp4",
   "assets/midia/influencers/7x7-allan/11-ddhzaltusdu.mp4",
   "assets/midia/influencers/7x7-allan/12-ddha5ivo2zu.mp4",
+  "assets/midia/motion-graphics/juspago/01-quem-somos.mp4",
   "yt:-9Mt10UtK5Q",
   "yt:-PE96v7amZU",
   "yt:2YplK33BsVs",

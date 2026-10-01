@@ -66,7 +66,7 @@ const CATEGORIAS = [
   { id: "youtube",      nome: "YouTube" },
   { id: "influencers",  nome: "Figura pública" },
   { id: "video-com-ia", nome: "Vídeo com IA" },
-  { id: "motion-graphics", nome: "Motion Graphics", semNuvem: true },
+  { id: "motion-graphics", nome: "Motion Graphics" },
 ];
 
 /* Os projetos (clientes) são gerados automaticamente em assets/js/projetos.js
