@@ -853,5 +853,26 @@ const PROJETOS = [
         "vertical": true
       }
     ]
+  },
+  {
+    "categoria": "motion-graphics",
+    "titulo": "tHeorIA.Mov",
+    "ano": "",
+    "capa": "assets/midia/motion-graphics/theoria-mov/capa.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/theoria-mov/01-reel-theoria.mp4",
+        "poster": "assets/midia/motion-graphics/theoria-mov/01-reel-theoria-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/theoria-mov/02-percepcao-do-relogio.mp4",
+        "poster": "assets/midia/motion-graphics/theoria-mov/02-percepcao-do-relogio-thumb.jpg",
+        "vertical": false
+      }
+    ]
   }
 ];
