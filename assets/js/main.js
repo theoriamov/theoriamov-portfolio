@@ -341,7 +341,7 @@ function renderFlutuantes() {
   const salvas = typeof POSICOES === "undefined" ? {} : { ...POSICOES };
   const giros = typeof ROTACOES === "undefined" ? {} : { ...ROTACOES };   // ângulo (graus) de cada nuvem
   const celular = ehCelular();
-  box.innerHTML = CATEGORIAS.map((c, i) => {
+  box.innerHTML = CATEGORIAS.filter((c) => !c.semNuvem).map((c, i) => {
     let x, topo, giro;
     if (celular) {
       const cfg = POS_CELULAR[c.id] || { x: 50, y: 50, ancora: "t", rot: 0 };

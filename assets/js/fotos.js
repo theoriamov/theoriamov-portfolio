@@ -2,7 +2,7 @@
 const FOTOS = {
   "empresarial": {
     "x": 50,
-    "y": 72.5,
+    "y": 70.5,
     "z": 1.2
   },
   "gastronomico": {

@@ -472,6 +472,48 @@ const PROJETOS = [
     ]
   },
   {
+    "categoria": "motion-graphics",
+    "titulo": "Infográfico",
+    "ano": "",
+    "capa": "assets/midia/motion-graphics/infografico/01-infografico-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/infografico/01-infografico.mp4",
+        "poster": "assets/midia/motion-graphics/infografico/01-infografico-thumb.jpg",
+        "vertical": false
+      }
+    ]
+  },
+  {
+    "categoria": "motion-graphics",
+    "titulo": "JusPago",
+    "ano": "",
+    "capa": "assets/midia/motion-graphics/juspago/01-quem-somos-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/juspago/01-quem-somos.mp4",
+        "poster": "assets/midia/motion-graphics/juspago/01-quem-somos-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/juspago/02-filme-02.mp4",
+        "poster": "assets/midia/motion-graphics/juspago/02-filme-02-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/juspago/03-assinatura-3d.mp4",
+        "poster": "assets/midia/motion-graphics/juspago/03-assinatura-3d-thumb.jpg",
+        "vertical": true
+      }
+    ]
+  },
+  {
     "categoria": "empresarial",
     "titulo": "Lótus Contabilidade",
     "ano": "",
