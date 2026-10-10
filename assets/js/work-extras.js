@@ -12,6 +12,8 @@ const vid = (nome, titulo, categoria, vertical = true) => ({ tipo: "video", src:
 const WORK_EXTRAS = [
   vid("showreel-2026", "Showreel 2026", "reels"),
   vid("is-this-real-reel", "Is this real? Talking-head reel with motion graphics", "reels"),
+  vid("before-after-reel-1", "Before and after: phone footage turned into a cinematic reel", "reels"),
+  vid("before-after-reel-2", "Before and after: raw vs edited talking-head reel", "reels"),
   vid("minotauro-energy-ad", "Minotauro Energy: AI commercial", "ai"),
   vid("megalodon-documentary", "Megalodon: documentary edit with narration and sound design", "documentary", false),
   vid("trex-documentary", "T. rex: documentary editing sample (real footage only)", "documentary", false),
