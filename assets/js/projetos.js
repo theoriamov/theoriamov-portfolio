@@ -487,18 +487,39 @@ const PROJETOS = [
     ]
   },
   {
-    "categoria": "motion-graphics",
-    "titulo": "JusPago",
+    "categoria": "gastronomico",
+    "titulo": "Izakaya Gaijin",
     "ano": "",
-    "capa": "assets/midia/motion-graphics/juspago/01-quem-somos-thumb.jpg",
+    "capa": "assets/midia/gastronomico/izakaya-gaijin/01-djo1fr3tsqk-thumb.jpg",
     "redes": {},
     "itens": [
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/juspago/01-quem-somos.mp4",
-        "poster": "assets/midia/motion-graphics/juspago/01-quem-somos-thumb.jpg",
+        "src": "assets/midia/gastronomico/izakaya-gaijin/01-djo1fr3tsqk.mp4",
+        "poster": "assets/midia/gastronomico/izakaya-gaijin/01-djo1fr3tsqk-thumb.jpg",
         "vertical": true
       },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/izakaya-gaijin/03-dimxj6ws9ev.mp4",
+        "poster": "assets/midia/gastronomico/izakaya-gaijin/03-dimxj6ws9ev-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/gastronomico/izakaya-gaijin/04-dhzmikhsrrc.mp4",
+        "poster": "assets/midia/gastronomico/izakaya-gaijin/04-dhzmikhsrrc-thumb.jpg",
+        "vertical": true
+      }
+    ]
+  },
+  {
+    "categoria": "motion-graphics",
+    "titulo": "JusPago",
+    "ano": "",
+    "capa": "assets/midia/motion-graphics/juspago/02-filme-02-thumb.jpg",
+    "redes": {},
+    "itens": [
       {
         "tipo": "video",
         "src": "assets/midia/motion-graphics/juspago/02-filme-02.mp4",
