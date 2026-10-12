@@ -4,7 +4,7 @@
    - YouTube:  { tipo: "youtube", id: "ID_DO_VIDEO", titulo: "...", categoria: "..." }
                (o ID é o que vem depois de "watch?v=" ou "youtu.be/")
    - Arquivo:  { tipo: "video", src: "assets/midia/extras/arquivo.mp4", poster: "assets/midia/extras/arquivo-thumb.jpg", vertical: true, titulo: "...", categoria: "..." }
-   categoria: reels | ai | business | food | youtube | documentary | motion | events
+   categoria: reels | auto | ai | business | food | youtube | documentary | motion | events
    ========================================================= */
 const X = "assets/midia/extras/";
 const vid = (nome, titulo, categoria, vertical = true) => ({ tipo: "video", src: `${X}${nome}.mp4`, poster: `${X}${nome}-thumb.jpg`, vertical, titulo, categoria });
@@ -21,10 +21,14 @@ const WORK_EXTRAS = [
   vid("trex-documentary", "T. rex: documentary editing sample (real footage only)", "documentary", false),
   vid("five-dollar-habit", "The 5 Dollar Habit: finance documentary", "documentary", false),
   vid("minimum-payment-trap", "The Minimum Payment Trap: finance documentary", "documentary", false),
+  vid("car-reel-wrap-shop", "Car wrap shop: process and before/after reel", "auto"),
+  vid("car-reel-dealership", "Car dealership: talking-head reel with macro details", "auto"),
   vid("food-reel-ramen", "Ramen restaurant: cinematic food reel", "food"),
   vid("food-reel-restaurant-tour", "Japanese restaurant: menu and ambience reel", "food"),
   vid("food-reel-chef", "Japanese restaurant: chef and dishes reel", "food"),
   vid("food-reel-cocktails", "Bar: cocktail making reel", "food"),
+  vid("food-reel-burger-week", "Burger restaurant: trend-style weekly menu reel", "food"),
+  vid("food-reel-kids-day", "Burger restaurant: fun themed reel with text hooks", "food"),
   vid("juspago-about", "Juspago: brand explainer with UI animation", "business"),
   vid("juspago-ente-devedor", "Juspago: educational video for a fintech", "business"),
   vid("ai-perfume-ad", "AI product ad: perfume", "ai", false),
