@@ -25,6 +25,7 @@ const WORK_EXTRAS = [
   vid("grandpa-max-chalkboard", "Chalkboard-style explainer animation with charts and characters", "motion", false),
   vid("vintage-war-documentary", "Archive documentary: vintage footage, titles and sound design", "documentary", false),
   vid("property-mailers-explainer", "Property Mailers: narrated product explainer with UI animation", "business", false),
+  vid("documentary-process", "Documentary editing process: B-roll research, sound design and motion", "documentary", false),
   vid("car-reel-wrap-shop", "Car wrap shop: process and before/after reel", "auto"),
   vid("car-reel-dealership", "Car dealership: talking-head reel with macro details", "auto"),
   vid("food-reel-ramen", "Ramen restaurant: cinematic food reel", "food"),
