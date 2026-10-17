@@ -45,4 +45,7 @@ const WORK_EXTRAS = [
   vid("watch-ui-animation", "Watch specs: UI motion graphics", "motion", false),
   { tipo: "youtube", id: "fR-1Sz2qlPI", titulo: "Nelson Piquet's garage: long-form YouTube episode", categoria: "youtube" },
   { tipo: "youtube", id: "VHMRHH2D6nQ", titulo: "YouTube video built from a script with images and B-roll", categoria: "youtube" },
+  { tipo: "youtube", id: "0gtZbfR_lnI", titulo: "Fiverr intro video: who I am and how I edit", categoria: "youtube" },
+  { tipo: "youtube", id: "1Na6ipU6JEE", titulo: "Pompeii, 72 AD: documentary edit", categoria: "documentary" },
+  { tipo: "youtube", id: "q1t6UABJddg", titulo: "5 watches I wouldn't buy without trying first: YouTube review", categoria: "youtube" },
 ];
