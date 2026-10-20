@@ -5,6 +5,7 @@
     { id: "all", nome: "All work" },
     { id: "reels", nome: "Reels & Social" },
     { id: "ai", nome: "AI Video Ads" },
+    { id: "auto", nome: "Automotive" },
     { id: "business", nome: "Brand & Business" },
     { id: "food", nome: "Food & Restaurants" },
     { id: "youtube", nome: "YouTube" },

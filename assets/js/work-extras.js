@@ -4,13 +4,15 @@
    - YouTube:  { tipo: "youtube", id: "ID_DO_VIDEO", titulo: "...", categoria: "..." }
                (o ID é o que vem depois de "watch?v=" ou "youtu.be/")
    - Arquivo:  { tipo: "video", src: "assets/midia/extras/arquivo.mp4", poster: "assets/midia/extras/arquivo-thumb.jpg", vertical: true, titulo: "...", categoria: "..." }
-   categoria: reels | ai | business | food | youtube | documentary | motion | events
+   categoria: reels | auto | ai | business | food | youtube | documentary | motion | events
    ========================================================= */
 const X = "assets/midia/extras/";
 const vid = (nome, titulo, categoria, vertical = true) => ({ tipo: "video", src: `${X}${nome}.mp4`, poster: `${X}${nome}-thumb.jpg`, vertical, titulo, categoria });
 
 const WORK_EXTRAS = [
   vid("showreel-2026", "Showreel 2026", "reels"),
+  vid("freelancer-intro-video", "Video editor intro: talking head with motion graphics and text behind the subject", "motion", false),
+  vid("youtube-editing-promo", "YouTube editing promo: motion graphics ad with portfolio clips", "youtube", false),
   vid("is-this-real-reel", "Is this real? Talking-head reel with motion graphics", "reels"),
   vid("before-after-reel-1", "Before and after: phone footage turned into a cinematic reel", "reels"),
   vid("before-after-reel-2", "Before and after: raw vs edited talking-head reel", "reels"),
@@ -21,6 +23,22 @@ const WORK_EXTRAS = [
   vid("trex-documentary", "T. rex: documentary editing sample (real footage only)", "documentary", false),
   vid("five-dollar-habit", "The 5 Dollar Habit: finance documentary", "documentary", false),
   vid("minimum-payment-trap", "The Minimum Payment Trap: finance documentary", "documentary", false),
+  vid("grandpa-max-brake-scam", "Explainer animation: how a brake-pad upsell works (2D motion)", "motion", false),
+  vid("grandpa-max-chalkboard", "Chalkboard-style explainer animation with charts and characters", "motion", false),
+  vid("vintage-war-documentary", "Archive documentary: vintage footage, titles and sound design", "documentary", false),
+  vid("property-mailers-explainer", "Property Mailers: narrated product explainer with UI animation", "business", false),
+  vid("stalin-war-documentary", "WWII archive documentary: archival footage, narration and sound design", "documentary", false),
+  vid("dinosaur-explainer", "Dinosaur extinction explainer: kinetic text, UI and 3D Earth", "motion", false),
+  vid("us-vs-mexico-map-explainer", "US vs Mexico: animated map explainer", "motion", false),
+  vid("documentary-process", "Documentary editing process: B-roll research, sound design and motion", "documentary", false),
+  vid("car-reel-wrap-shop", "Car wrap shop: process and before/after reel", "auto"),
+  vid("car-reel-dealership", "Car dealership: talking-head reel with macro details", "auto"),
+  vid("food-reel-ramen", "Ramen restaurant: cinematic food reel", "food"),
+  vid("food-reel-restaurant-tour", "Japanese restaurant: menu and ambience reel", "food"),
+  vid("food-reel-chef", "Japanese restaurant: chef and dishes reel", "food"),
+  vid("food-reel-cocktails", "Bar: cocktail making reel", "food"),
+  vid("food-reel-burger-week", "Burger restaurant: trend-style weekly menu reel", "food"),
+  vid("food-reel-kids-day", "Burger restaurant: fun themed reel with text hooks", "food"),
   vid("juspago-about", "Juspago: brand explainer with UI animation", "business"),
   vid("juspago-ente-devedor", "Juspago: educational video for a fintech", "business"),
   vid("ai-perfume-ad", "AI product ad: perfume", "ai", false),
@@ -30,4 +48,7 @@ const WORK_EXTRAS = [
   vid("watch-ui-animation", "Watch specs: UI motion graphics", "motion", false),
   { tipo: "youtube", id: "fR-1Sz2qlPI", titulo: "Nelson Piquet's garage: long-form YouTube episode", categoria: "youtube" },
   { tipo: "youtube", id: "VHMRHH2D6nQ", titulo: "YouTube video built from a script with images and B-roll", categoria: "youtube" },
+  { tipo: "youtube", id: "0gtZbfR_lnI", titulo: "Fiverr intro video: who I am and how I edit", categoria: "youtube" },
+  { tipo: "youtube", id: "1Na6ipU6JEE", titulo: "Pompeii, 72 AD: documentary edit", categoria: "documentary" },
+  { tipo: "youtube", id: "q1t6UABJddg", titulo: "5 watches I wouldn't buy without trying first: YouTube review", categoria: "youtube" },
 ];
