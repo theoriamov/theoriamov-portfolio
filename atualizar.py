@@ -202,7 +202,8 @@ def main():
     # Remove arquivos convertidos de coisas que você apagou da pasta midia/
     if SAIDA.exists():
         for f in SAIDA.rglob("*"):
-            if f.is_file() and f not in gerados:
+            # extras/ = vídeos da página em inglês (work.html), não vêm da pasta midia/
+            if f.is_file() and f not in gerados and "extras" not in f.relative_to(SAIDA).parts:
                 f.unlink()
         for d in sorted(SAIDA.rglob("*"), key=lambda p: len(p.parts), reverse=True):
             if d.is_dir() and not any(d.iterdir()):

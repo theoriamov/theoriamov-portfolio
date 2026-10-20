@@ -196,6 +196,21 @@ const PROJETOS = [
     ]
   },
   {
+    "categoria": "video-com-ia",
+    "titulo": "Adocs - Property Mailers",
+    "ano": "",
+    "capa": "assets/midia/video-com-ia/adocs-property-mailers/01-property-mailers-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/video-com-ia/adocs-property-mailers/01-property-mailers.mp4",
+        "poster": "assets/midia/video-com-ia/adocs-property-mailers/01-property-mailers-thumb.jpg",
+        "vertical": false
+      }
+    ]
+  },
+  {
     "categoria": "eventos",
     "titulo": "Aniversário",
     "ano": "",
@@ -312,6 +327,70 @@ const PROJETOS = [
         "src": "assets/midia/empresarial/bluemetrix/29-dpojjdujds8.mp4",
         "poster": "assets/midia/empresarial/bluemetrix/29-dpojjdujds8-thumb.jpg",
         "vertical": true
+      }
+    ]
+  },
+  {
+    "categoria": "motion-graphics",
+    "titulo": "Documentários",
+    "ano": "",
+    "capa": "assets/midia/motion-graphics/documentarios/01-documentary-preview-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/documentarios/01-documentary-preview.mp4",
+        "poster": "assets/midia/motion-graphics/documentarios/01-documentary-preview-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/documentarios/02-dinossauros.mp4",
+        "poster": "assets/midia/motion-graphics/documentarios/02-dinossauros-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/documentarios/03-nuremberg.mp4",
+        "poster": "assets/midia/motion-graphics/documentarios/03-nuremberg-thumb.jpg",
+        "vertical": false
+      }
+    ]
+  },
+  {
+    "categoria": "motion-graphics",
+    "titulo": "Explainers e Motion",
+    "ano": "",
+    "capa": "assets/midia/motion-graphics/explainers-e-motion/01-grandpa-max-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/explainers-e-motion/01-grandpa-max.mp4",
+        "poster": "assets/midia/motion-graphics/explainers-e-motion/01-grandpa-max-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/explainers-e-motion/02-us-vs-mexico.mp4",
+        "poster": "assets/midia/motion-graphics/explainers-e-motion/02-us-vs-mexico-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/explainers-e-motion/03-youtube-editing.mp4",
+        "poster": "assets/midia/motion-graphics/explainers-e-motion/03-youtube-editing-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/explainers-e-motion/04-notion.mp4",
+        "poster": "assets/midia/motion-graphics/explainers-e-motion/04-notion-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "youtube",
+        "id": "WmClusi2pAo"
       }
     ]
   },
@@ -871,6 +950,39 @@ const PROJETOS = [
         "tipo": "video",
         "src": "assets/midia/gastronomico/nerdsburguer/34-dl5dc9yongb.mp4",
         "poster": "assets/midia/gastronomico/nerdsburguer/34-dl5dc9yongb-thumb.jpg",
+        "vertical": true
+      }
+    ]
+  },
+  {
+    "categoria": "motion-graphics",
+    "titulo": "Reels",
+    "ano": "",
+    "capa": "assets/midia/motion-graphics/reels/01-video-de-apresentacao-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/reels/01-video-de-apresentacao.mp4",
+        "poster": "assets/midia/motion-graphics/reels/01-video-de-apresentacao-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/reels/02-knicks-mahjong.mp4",
+        "poster": "assets/midia/motion-graphics/reels/02-knicks-mahjong-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/reels/03-before-after.mp4",
+        "poster": "assets/midia/motion-graphics/reels/03-before-after-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/reels/04-hearthustle-before-after.mp4",
+        "poster": "assets/midia/motion-graphics/reels/04-hearthustle-before-after-thumb.jpg",
         "vertical": true
       }
     ]
