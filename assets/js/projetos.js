@@ -331,6 +331,21 @@ const PROJETOS = [
     ]
   },
   {
+    "categoria": "video-com-ia",
+    "titulo": "Comercial de Perfume",
+    "ano": "",
+    "capa": "assets/midia/video-com-ia/comercial-de-perfume/01-perfume-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/video-com-ia/comercial-de-perfume/01-perfume.mp4",
+        "poster": "assets/midia/video-com-ia/comercial-de-perfume/01-perfume-thumb.jpg",
+        "vertical": false
+      }
+    ]
+  },
+  {
     "categoria": "documentario",
     "titulo": "Documentários",
     "ano": "",
@@ -759,6 +774,27 @@ const PROJETOS = [
         "tipo": "youtube",
         "id": "0f0eUrc44Rg",
         "titulo": "Relógios Caros x Baratos + Super Bowl e Polêmicas da Semana Mesa do Tempo #2"
+      }
+    ]
+  },
+  {
+    "categoria": "video-com-ia",
+    "titulo": "Minotauro Energy",
+    "ano": "",
+    "capa": "assets/midia/video-com-ia/minotauro-energy/01-bebida-dos-campeoes-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/video-com-ia/minotauro-energy/01-bebida-dos-campeoes.mp4",
+        "poster": "assets/midia/video-com-ia/minotauro-energy/01-bebida-dos-campeoes-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/video-com-ia/minotauro-energy/02-energetico-blender.mp4",
+        "poster": "assets/midia/video-com-ia/minotauro-energy/02-energetico-blender-thumb.jpg",
+        "vertical": true
       }
     ]
   },
