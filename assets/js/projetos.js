@@ -984,6 +984,12 @@ const PROJETOS = [
         "src": "assets/midia/motion-graphics/reels/04-hearthustle-before-after.mp4",
         "poster": "assets/midia/motion-graphics/reels/04-hearthustle-before-after-thumb.jpg",
         "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/reels/05-mario-zuniga-before-after.mp4",
+        "poster": "assets/midia/motion-graphics/reels/05-mario-zuniga-before-after-thumb.jpg",
+        "vertical": true
       }
     ]
   },

@@ -570,7 +570,8 @@ function renderTrabalhos() {
     videos = cliente ? porCliente.flat().filter((v) => v.cliente === cliente) : lista;
     const visiveis = (arr) => arr.filter((v) => !ocultos.has(chave(v.item))).length;
 
-    filtro.innerHTML = doCat.length > 1
+    // No modo edição os cards aparecem mesmo quando há um só (para poder soltar vídeos neles)
+    filtro.innerHTML = doCat.length > 1 || (EDITAR && doCat.length)
       ? [`<button data-cli="" aria-pressed="${!cliente}">Todos <small>${visiveis(lista)}</small></button>`,
          ...doCat.map((p) => `<button data-cli="${esc(p.titulo)}" aria-pressed="${cliente === p.titulo}">${esc(p.titulo)} <small>${visiveis(lista.filter((v) => v.cliente === p.titulo))}</small></button>`)].join("")
       : "";
@@ -579,7 +580,7 @@ function renderTrabalhos() {
     if (sel && redesHtml(sel.redes)) filtro.insertAdjacentHTML("beforeend", `<span class="filtro__redes">${redesHtml(sel.redes)}</span>`);
     if (EDITAR) {
       const n = lista.length - visiveis(lista);
-      avisoEdicao.innerHTML = `<strong>Modo edição</strong> — só você vê isto. Clique no ✕ para esconder vídeos que não são seus${n ? ` · <b>${n}</b> escondido${n > 1 ? "s" : ""} nesta categoria (clique no ↺ para mostrar de novo)` : ""}.`;
+      avisoEdicao.innerHTML = `<strong>Modo edição</strong> — só você vê isto. Segure e arraste um vídeo até o nome de um card para mudá-lo de lugar (passe sobre outra categoria para trocar de aba). Clique no ✕ para esconder vídeos que não são seus${n ? ` · <b>${n}</b> escondido${n > 1 ? "s" : ""} nesta categoria (clique no ↺ para mostrar de novo)` : ""}.`;
     }
     grid.innerHTML = videos.length ? videos.map(cardHtml).join("") : `<p style="color:var(--muted)">Em breve.</p>`;
     observarReveal();
@@ -613,7 +614,65 @@ function renderTrabalhos() {
     mostrar(CATEGORIAS.some((x) => x.id === c) ? c : CATEGORIAS[0].id, false);
   });
 
+  if (EDITAR) ativarArrastar();
+
+  /* Modo edição: segurar um vídeo e soltar no nome de um card (Reels, Documentários...).
+     Passar por cima de outra categoria com o vídeo troca de aba. O servidor move o arquivo em midia/. */
+  let arrasto = null, soltouAgora = false;
+  function ativarArrastar() {
+    grid.addEventListener("dragstart", (e) => e.preventDefault());   // sem o arrastar nativo da imagem
+    grid.addEventListener("pointerdown", (e) => {
+      const card = e.target.closest(".card");
+      if (e.button !== 0 || !card || e.target.closest("[data-x]")) return;
+      const v = videos[Number(card.dataset.i)];
+      if (v.item.tipo === "youtube") return;   // links do YouTube ficam no info.txt, não são arquivos
+      arrasto = { v, x: e.clientX, y: e.clientY, ghost: null, alvo: null, timer: 0 };
+    });
+    window.addEventListener("pointermove", (e) => {
+      if (!arrasto) return;
+      if (!arrasto.ghost) {
+        if (Math.hypot(e.clientX - arrasto.x, e.clientY - arrasto.y) < 8) return;
+        arrasto.ghost = Object.assign(document.createElement("img"), { src: miniatura(arrasto.v.item), className: "arrasto-ghost" });
+        document.body.append(arrasto.ghost);
+        document.body.classList.add("arrastando");
+      }
+      e.preventDefault();
+      arrasto.ghost.style.translate = `${e.clientX}px ${e.clientY}px`;
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      const alvo = el && (el.closest("#filtro-alvo [data-cli]:not([data-cli=''])") || el.closest(".pill[data-cat]"));
+      if (alvo === arrasto.alvo) return;
+      arrasto.alvo?.classList.remove("is-alvo");
+      clearTimeout(arrasto.timer);
+      arrasto.alvo = alvo;
+      if (!alvo) return;
+      alvo.classList.add("is-alvo");
+      if (alvo.dataset.cat && alvo.dataset.cat !== cat)
+        arrasto.timer = setTimeout(() => { mostrar(alvo.dataset.cat, true); arrasto && (arrasto.alvo = null); }, 450);
+    });
+    const soltar = () => {
+      if (!arrasto) return;
+      const { v, ghost, alvo, timer } = arrasto;
+      arrasto = null;
+      clearTimeout(timer);
+      if (!ghost) return;
+      ghost.remove();
+      document.body.classList.remove("arrastando");
+      alvo?.classList.remove("is-alvo");
+      soltouAgora = true;
+      setTimeout(() => (soltouAgora = false), 50);
+      if (!alvo || !alvo.dataset.cli || alvo.dataset.cli === v.cliente) return;
+      avisoEdicao.innerHTML = `<strong>Movendo…</strong> ${esc(v.cliente)} → ${esc(alvo.dataset.cli)}`;
+      fetch("/api/mover", { method: "POST", body: JSON.stringify({ src: v.item.src, categoria: cat, cliente: alvo.dataset.cli }) })
+        .then(async (r) => { if (!r.ok) throw new Error(await r.text()); location.reload(); })
+        .catch((err) => { alert(err.message || "Não consegui mover. Abra o site pelo ABRIR PORTFOLIO.bat."); desenhar(); });
+    };
+    window.addEventListener("pointerup", soltar);
+    window.addEventListener("pointercancel", soltar);
+  }
+  filtro.id = "filtro-alvo";
+
   grid.addEventListener("click", (e) => {
+    if (soltouAgora) return;
     const x = e.target.closest("[data-x]");
     if (x) {
       const k = chave(videos[Number(x.dataset.x)].item);

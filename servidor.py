@@ -8,6 +8,10 @@ Abra http://localhost:5173 — no seu computador:
 """
 
 import json
+import os
+import shutil
+import subprocess
+import sys
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -35,6 +39,40 @@ def salvar(nome, dados):
     )
 
 
+def mover(dados):
+    """Arrastar um vídeo para outro card: move o arquivo original em midia/ (e o já convertido,
+    para não converter de novo) e roda o atualizar.py. Devolve uma mensagem de erro ou None."""
+    from atualizar import ENTRADA, SAIDA, ler_info, slug
+
+    src, cat, titulo = dados.get("src", ""), dados.get("categoria", ""), dados.get("cliente", "")
+    origem = destino = None
+    for pasta_cat in (p for p in ENTRADA.iterdir() if p.is_dir()):
+        for pasta_cli in (p for p in pasta_cat.iterdir() if p.is_dir()):
+            if slug(pasta_cat.name) == cat and ler_info(pasta_cli).get("titulo", pasta_cli.name) == titulo:
+                destino = pasta_cli
+            base = f"assets/midia/{slug(pasta_cat.name)}/{slug(pasta_cli.name)}/"
+            for arq in pasta_cli.iterdir():
+                if arq.is_file() and src.startswith(base) and Path(src).stem == slug(arq.stem):
+                    origem = arq
+    if not origem or not destino:
+        return "Não achei o arquivo ou o card de destino."
+    if origem.parent == destino:
+        return None
+    if (destino / origem.name).exists():
+        return f"Já existe um arquivo chamado {origem.name} nesse card."
+
+    pasta_nova = SAIDA / slug(destino.parent.name) / slug(destino.name)
+    pasta_nova.mkdir(parents=True, exist_ok=True)
+    convertido = RAIZ / src
+    for f in (convertido, convertido.with_name(convertido.stem + "-thumb.jpg")):
+        if f.exists():
+            shutil.move(f, pasta_nova / f.name)   # mantém a data: o atualizar.py não converte de novo
+    shutil.move(origem, destino / origem.name)
+    subprocess.run([sys.executable, str(RAIZ / "atualizar.py")], cwd=RAIZ, capture_output=True,
+                   env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    return None
+
+
 class Handler(SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header("Cache-Control", "no-store")  # sempre mostra a versão mais nova
@@ -42,6 +80,18 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         nome = self.path.removeprefix("/api/")
+        if nome == "mover":
+            tamanho = int(self.headers.get("Content-Length", 0))
+            try:
+                erro = mover(json.loads(self.rfile.read(tamanho) or b"{}"))
+            except (ValueError, OSError) as e:
+                erro = f"Não consegui mover: {e}"
+            self.send_response(400 if erro else 204)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            if erro:
+                self.wfile.write(erro.encode("utf-8"))
+            return
         if nome not in ARQUIVOS:
             self.send_error(404)
             return

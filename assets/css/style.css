@@ -445,6 +445,16 @@ html { scroll-behavior: smooth; }
 }
 .aviso-edicao strong { color: var(--accent); }
 
+/* Arrastar vídeo para outro card (modo edição) */
+.arrasto-ghost {
+  position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none;
+  width: 140px; border-radius: 10px; margin: -40px 0 0 -70px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.6); opacity: .9; rotate: -4deg;
+}
+body.arrastando { user-select: none; cursor: grabbing; }
+body.arrastando .filtro button:not([data-cli=""]) { opacity: .9; border-bottom: 2px dashed var(--muted); }
+.filtro button.is-alvo, .pill.is-alvo { opacity: 1; color: var(--accent); border-color: var(--accent); }
+
 /* Textos editáveis */
 [data-editar] { white-space: pre-line; } /* respeita as quebras de linha que você digitar */
 [data-editar]:empty { display: none; }    /* texto apagado some do site */
