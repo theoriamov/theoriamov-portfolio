@@ -52,11 +52,24 @@ def mover(dados):
                 destino = pasta_cli
             base = f"assets/midia/{slug(pasta_cat.name)}/{slug(pasta_cli.name)}/"
             for arq in pasta_cli.iterdir():
-                if arq.is_file() and src.startswith(base) and Path(src).stem == slug(arq.stem):
+                if src.startswith("yt:"):
+                    if arq.name.lower() == "info.txt" and src[3:] in arq.read_text(encoding="utf-8-sig"):
+                        origem = arq
+                elif arq.is_file() and src.startswith(base) and Path(src).stem == slug(arq.stem):
                     origem = arq
     if not origem or not destino:
         return "Não achei o arquivo ou o card de destino."
     if origem.parent == destino:
+        return None
+    if src.startswith("yt:"):   # vídeo do YouTube: passa a linha "youtube:" de um info.txt para o outro
+        linhas = origem.read_text(encoding="utf-8-sig").splitlines()
+        mover_linhas = [l for l in linhas if l.lower().startswith("youtube:") and src[3:] in l]
+        origem.write_text("\n".join(l for l in linhas if l not in mover_linhas) + "\n", encoding="utf-8")
+        info = destino / "info.txt"
+        antes = info.read_text(encoding="utf-8-sig").rstrip("\n") + "\n" if info.exists() else ""
+        info.write_text(antes + "\n".join(mover_linhas) + "\n", encoding="utf-8")
+        subprocess.run([sys.executable, str(RAIZ / "atualizar.py")], cwd=RAIZ, capture_output=True,
+                       env={**os.environ, "PYTHONIOENCODING": "utf-8"})
         return None
     if (destino / origem.name).exists():
         return f"Já existe um arquivo chamado {origem.name} nesse card."

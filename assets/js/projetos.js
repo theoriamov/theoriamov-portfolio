@@ -331,29 +331,45 @@ const PROJETOS = [
     ]
   },
   {
-    "categoria": "motion-graphics",
+    "categoria": "documentario",
     "titulo": "Documentários",
     "ano": "",
-    "capa": "assets/midia/motion-graphics/documentarios/01-documentary-preview-thumb.jpg",
+    "capa": "assets/midia/documentario/documentarios/01-documentary-preview-thumb.jpg",
     "redes": {},
     "itens": [
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/documentarios/01-documentary-preview.mp4",
-        "poster": "assets/midia/motion-graphics/documentarios/01-documentary-preview-thumb.jpg",
+        "src": "assets/midia/documentario/documentarios/01-documentary-preview.mp4",
+        "poster": "assets/midia/documentario/documentarios/01-documentary-preview-thumb.jpg",
         "vertical": false
       },
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/documentarios/02-dinossauros.mp4",
-        "poster": "assets/midia/motion-graphics/documentarios/02-dinossauros-thumb.jpg",
+        "src": "assets/midia/documentario/documentarios/02-dinossauros.mp4",
+        "poster": "assets/midia/documentario/documentarios/02-dinossauros-thumb.jpg",
         "vertical": false
       },
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/documentarios/03-nuremberg.mp4",
-        "poster": "assets/midia/motion-graphics/documentarios/03-nuremberg-thumb.jpg",
+        "src": "assets/midia/documentario/documentarios/03-nuremberg.mp4",
+        "poster": "assets/midia/documentario/documentarios/03-nuremberg-thumb.jpg",
         "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/documentario/documentarios/04-jared.mp4",
+        "poster": "assets/midia/documentario/documentarios/04-jared-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/documentario/documentarios/05-megalodon.mp4",
+        "poster": "assets/midia/documentario/documentarios/05-megalodon-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "youtube",
+        "id": "WmClusi2pAo"
       }
     ]
   },
@@ -368,6 +384,24 @@ const PROJETOS = [
         "tipo": "video",
         "src": "assets/midia/motion-graphics/explainers-e-motion/01-grandpa-max.mp4",
         "poster": "assets/midia/motion-graphics/explainers-e-motion/01-grandpa-max-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/explainers-e-motion/01-infografico.mp4",
+        "poster": "assets/midia/motion-graphics/explainers-e-motion/01-infografico-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/explainers-e-motion/01-reel-theoria.mp4",
+        "poster": "assets/midia/motion-graphics/explainers-e-motion/01-reel-theoria-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/motion-graphics/explainers-e-motion/02-percepcao-do-relogio.mp4",
+        "poster": "assets/midia/motion-graphics/explainers-e-motion/02-percepcao-do-relogio-thumb.jpg",
         "vertical": false
       },
       {
@@ -387,10 +421,6 @@ const PROJETOS = [
         "src": "assets/midia/motion-graphics/explainers-e-motion/04-notion.mp4",
         "poster": "assets/midia/motion-graphics/explainers-e-motion/04-notion-thumb.jpg",
         "vertical": false
-      },
-      {
-        "tipo": "youtube",
-        "id": "WmClusi2pAo"
       }
     ]
   },
@@ -547,21 +577,6 @@ const PROJETOS = [
         "src": "assets/midia/empresarial/grupo-capital/33-dod29q-evav.mp4",
         "poster": "assets/midia/empresarial/grupo-capital/33-dod29q-evav-thumb.jpg",
         "vertical": true
-      }
-    ]
-  },
-  {
-    "categoria": "motion-graphics",
-    "titulo": "Infográfico",
-    "ano": "",
-    "capa": "assets/midia/motion-graphics/infografico/01-infografico-thumb.jpg",
-    "redes": {},
-    "itens": [
-      {
-        "tipo": "video",
-        "src": "assets/midia/motion-graphics/infografico/01-infografico.mp4",
-        "poster": "assets/midia/motion-graphics/infografico/01-infografico-thumb.jpg",
-        "vertical": false
       }
     ]
   },
@@ -955,62 +970,41 @@ const PROJETOS = [
     ]
   },
   {
-    "categoria": "motion-graphics",
+    "categoria": "portifolio-eua",
     "titulo": "Reels",
     "ano": "",
-    "capa": "assets/midia/motion-graphics/reels/01-video-de-apresentacao-thumb.jpg",
+    "capa": "assets/midia/portifolio-eua/reels/01-video-de-apresentacao-thumb.jpg",
     "redes": {},
     "itens": [
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/reels/01-video-de-apresentacao.mp4",
-        "poster": "assets/midia/motion-graphics/reels/01-video-de-apresentacao-thumb.jpg",
+        "src": "assets/midia/portifolio-eua/reels/01-video-de-apresentacao.mp4",
+        "poster": "assets/midia/portifolio-eua/reels/01-video-de-apresentacao-thumb.jpg",
         "vertical": false
       },
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/reels/02-knicks-mahjong.mp4",
-        "poster": "assets/midia/motion-graphics/reels/02-knicks-mahjong-thumb.jpg",
+        "src": "assets/midia/portifolio-eua/reels/02-knicks-mahjong.mp4",
+        "poster": "assets/midia/portifolio-eua/reels/02-knicks-mahjong-thumb.jpg",
         "vertical": true
       },
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/reels/03-before-after.mp4",
-        "poster": "assets/midia/motion-graphics/reels/03-before-after-thumb.jpg",
+        "src": "assets/midia/portifolio-eua/reels/03-before-after.mp4",
+        "poster": "assets/midia/portifolio-eua/reels/03-before-after-thumb.jpg",
         "vertical": true
       },
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/reels/04-hearthustle-before-after.mp4",
-        "poster": "assets/midia/motion-graphics/reels/04-hearthustle-before-after-thumb.jpg",
+        "src": "assets/midia/portifolio-eua/reels/04-hearthustle-before-after.mp4",
+        "poster": "assets/midia/portifolio-eua/reels/04-hearthustle-before-after-thumb.jpg",
         "vertical": true
       },
       {
         "tipo": "video",
-        "src": "assets/midia/motion-graphics/reels/05-mario-zuniga-before-after.mp4",
-        "poster": "assets/midia/motion-graphics/reels/05-mario-zuniga-before-after-thumb.jpg",
+        "src": "assets/midia/portifolio-eua/reels/05-mario-zuniga-before-after.mp4",
+        "poster": "assets/midia/portifolio-eua/reels/05-mario-zuniga-before-after-thumb.jpg",
         "vertical": true
-      }
-    ]
-  },
-  {
-    "categoria": "motion-graphics",
-    "titulo": "tHeorIA.Mov",
-    "ano": "",
-    "capa": "assets/midia/motion-graphics/theoria-mov/capa.jpg",
-    "redes": {},
-    "itens": [
-      {
-        "tipo": "video",
-        "src": "assets/midia/motion-graphics/theoria-mov/01-reel-theoria.mp4",
-        "poster": "assets/midia/motion-graphics/theoria-mov/01-reel-theoria-thumb.jpg",
-        "vertical": true
-      },
-      {
-        "tipo": "video",
-        "src": "assets/midia/motion-graphics/theoria-mov/02-percepcao-do-relogio.mp4",
-        "poster": "assets/midia/motion-graphics/theoria-mov/02-percepcao-do-relogio-thumb.jpg",
-        "vertical": false
       }
     ]
   }

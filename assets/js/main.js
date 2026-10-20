@@ -308,6 +308,7 @@ const POS_COMPUTADOR = {
   // (assim acompanha os botões em qualquer tamanho de tela).
   influencers: [9, 150, "b"], youtube: [91, 138, "b"],
   "motion-graphics": [47, 5],
+  documentario: [30, 92], "portifolio-eua": [70, 92],
 };
 /* Celular: as nuvens formam uma "volta" em torno do título e do parágrafo (2 em cima, 2 nas laterais do título
    inclinadas na diagonal, 2 embaixo do parágrafo). A altura é medida a partir de um ponto de referência:
@@ -320,6 +321,8 @@ const POS_CELULAR = {
   influencers:    { x: 19, y: 28,  ancora: "sub",    rot: 12 },
   youtube:        { x: 84, y: 28,  ancora: "sub",    rot: -12 },
   "motion-graphics": { x: 50, y: 150, ancora: "t",    rot: 0 },
+  documentario:     { x: 27, y: 100, ancora: "t",      rot: 0 },
+  "portifolio-eua": { x: 73, y: 100, ancora: "t",      rot: 0 },
 };
 const ehCelular = () => matchMedia("(max-width: 700px)").matches;
 
@@ -625,7 +628,6 @@ function renderTrabalhos() {
       const card = e.target.closest(".card");
       if (e.button !== 0 || !card || e.target.closest("[data-x]")) return;
       const v = videos[Number(card.dataset.i)];
-      if (v.item.tipo === "youtube") return;   // links do YouTube ficam no info.txt, não são arquivos
       arrasto = { v, x: e.clientX, y: e.clientY, ghost: null, alvo: null, timer: 0 };
     });
     window.addEventListener("pointermove", (e) => {
@@ -662,7 +664,7 @@ function renderTrabalhos() {
       setTimeout(() => (soltouAgora = false), 50);
       if (!alvo || !alvo.dataset.cli || alvo.dataset.cli === v.cliente) return;
       avisoEdicao.innerHTML = `<strong>Movendo…</strong> ${esc(v.cliente)} → ${esc(alvo.dataset.cli)}`;
-      fetch("/api/mover", { method: "POST", body: JSON.stringify({ src: v.item.src, categoria: cat, cliente: alvo.dataset.cli }) })
+      fetch("/api/mover", { method: "POST", body: JSON.stringify({ src: chave(v.item), categoria: cat, cliente: alvo.dataset.cli }) })
         .then(async (r) => { if (!r.ok) throw new Error(await r.text()); location.reload(); })
         .catch((err) => { alert(err.message || "Não consegui mover. Abra o site pelo ABRIR PORTFOLIO.bat."); desenhar(); });
     };
