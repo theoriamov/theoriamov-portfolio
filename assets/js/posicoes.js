@@ -13,19 +13,27 @@ const POSICOES = {
     75.5
   ],
   "gastronomico": [
-    75.5,
-    17.6
+    73.2,
+    18.4
   ],
   "influencers": [
     26.9,
     15.8
   ],
   "youtube": [
-    87.6,
-    76.7
+    88.6,
+    74.2
   ],
   "motion-graphics": [
-    51.1,
-    12.9
+    52.2,
+    9
+  ],
+  "documentario": [
+    29.3,
+    88
+  ],
+  "portifolio-eua": [
+    66.8,
+    88.1
   ]
 };
