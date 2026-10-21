@@ -18,6 +18,7 @@ const WORK_EXTRAS = [
   vid("before-after-reel-2", "Before and after: raw vs edited talking-head reel", "reels"),
   vid("before-after-reel-3", "Before and after: interview reel with animated captions and graphics", "reels"),
   vid("before-after-reel-4", "Before and after: education brand ad with kinetic text", "reels"),
+  vid("digital-asset-empire-motion", "Podcast reel with kinetic captions and motion graphics", "reels"),
   vid("minotauro-energy-ad", "Minotauro Energy: AI commercial", "ai"),
   vid("megalodon-documentary", "Megalodon: documentary edit with narration and sound design", "documentary", false),
   vid("trex-documentary", "T. rex: documentary editing sample (real footage only)", "documentary", false),

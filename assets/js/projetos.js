@@ -1041,6 +1041,12 @@ const PROJETOS = [
         "src": "assets/midia/portifolio-eua/reels/05-mario-zuniga-before-after.mp4",
         "poster": "assets/midia/portifolio-eua/reels/05-mario-zuniga-before-after-thumb.jpg",
         "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/portifolio-eua/reels/06-digital-asset-empire.mp4",
+        "poster": "assets/midia/portifolio-eua/reels/06-digital-asset-empire-thumb.jpg",
+        "vertical": true
       }
     ]
   }
