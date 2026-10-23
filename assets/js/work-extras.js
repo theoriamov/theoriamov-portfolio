@@ -21,7 +21,6 @@ const WORK_EXTRAS = [
   vid("digital-asset-empire-motion", "Podcast reel with kinetic captions and motion graphics", "reels"),
   vid("before-after-reel-5", "Before and after: Spanish talking-head reel with animated captions and UI", "reels"),
   vid("knicks-mahjong-reel", "Not your grandma's mahjong: event promo reel with kinetic text", "reels"),
-  vid("youtube-editor-intro", "YouTube editor intro: talking head with editing UI animation", "youtube", false),
   vid("youtube-cinematic-promo", "Cinematic YouTube editing promo: hooks, B-roll, sound design and thumbnails", "youtube", false),
   vid("minotauro-energy-ad", "Minotauro Energy: AI commercial", "ai"),
   vid("megalodon-documentary", "Megalodon: documentary edit with narration and sound design", "documentary", false),

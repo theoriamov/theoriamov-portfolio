@@ -1060,15 +1060,9 @@ const PROJETOS = [
     "categoria": "portifolio-eua",
     "titulo": "YouTube",
     "ano": "",
-    "capa": "assets/midia/portifolio-eua/youtube/01-youtube-editor-intro-thumb.jpg",
+    "capa": "assets/midia/portifolio-eua/youtube/02-youtube-cinematic-thumb.jpg",
     "redes": {},
     "itens": [
-      {
-        "tipo": "video",
-        "src": "assets/midia/portifolio-eua/youtube/01-youtube-editor-intro.mp4",
-        "poster": "assets/midia/portifolio-eua/youtube/01-youtube-editor-intro-thumb.jpg",
-        "vertical": false
-      },
       {
         "tipo": "video",
         "src": "assets/midia/portifolio-eua/youtube/02-youtube-cinematic.mp4",
