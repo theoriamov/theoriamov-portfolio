@@ -1047,6 +1047,33 @@ const PROJETOS = [
         "src": "assets/midia/portifolio-eua/reels/06-digital-asset-empire.mp4",
         "poster": "assets/midia/portifolio-eua/reels/06-digital-asset-empire-thumb.jpg",
         "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/portifolio-eua/reels/07-mario-zuniga-vermelho.mp4",
+        "poster": "assets/midia/portifolio-eua/reels/07-mario-zuniga-vermelho-thumb.jpg",
+        "vertical": true
+      }
+    ]
+  },
+  {
+    "categoria": "portifolio-eua",
+    "titulo": "YouTube",
+    "ano": "",
+    "capa": "assets/midia/portifolio-eua/youtube/01-youtube-editor-intro-thumb.jpg",
+    "redes": {},
+    "itens": [
+      {
+        "tipo": "video",
+        "src": "assets/midia/portifolio-eua/youtube/01-youtube-editor-intro.mp4",
+        "poster": "assets/midia/portifolio-eua/youtube/01-youtube-editor-intro-thumb.jpg",
+        "vertical": false
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/portifolio-eua/youtube/02-youtube-cinematic.mp4",
+        "poster": "assets/midia/portifolio-eua/youtube/02-youtube-cinematic-thumb.jpg",
+        "vertical": false
       }
     ]
   }
