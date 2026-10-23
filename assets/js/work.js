@@ -9,20 +9,53 @@
     { id: "business", nome: "Brand & Business" },
     { id: "food", nome: "Food & Restaurants" },
     { id: "youtube", nome: "YouTube" },
+    { id: "explainer", nome: "Animated Explainers" },
     { id: "documentary", nome: "Documentary" },
     { id: "motion", nome: "Motion Graphics" },
     { id: "events", nome: "Events" },
   ];
   // categoria do site (pt) -> categoria da página em inglês
-  const MAPA = { influencers: "reels", empresarial: "business", gastronomico: "food", youtube: "youtube", "motion-graphics": "motion", eventos: "events", "video-com-ia": "reels" };
-  const NOMES = { "Aniversário": "Birthday Event", "Infográfico": "Infographic", "Frelas Gastronomia": "Restaurant Projects", "Lótus Contabilidade": "Lotus Accounting", "Mesa do Tempo": "Mesa do Tempo (YouTube)" };
+  const MAPA = { influencers: "reels", empresarial: "business", gastronomico: "food", youtube: "youtube", "motion-graphics": "motion", eventos: "events", "video-com-ia": "ai",
+    documentario: "documentary", "portifolio-eua": "reels" };
+  const NOMES = { "Aniversário": "Birthday Event", "Infográfico": "Infographic", "Frelas Gastronomia": "Restaurant Projects", "Lótus Contabilidade": "Lotus Accounting", "Mesa do Tempo": "Mesa do Tempo (YouTube)",
+    "Explainers e Motion": "Motion design", "Reels": "Before and after reel", "Documentários": "Documentary" };
 
   // Quantos vídeos de cada cliente aparecem (os primeiros da lista). "padrao" vale para quem não estiver aqui.
   const MAX_POR_CLIENTE = { padrao: 4, "Lótus Contabilidade": 4, "Grupo Capital": 4, "Nerdsburguer": 5, "Infográfico": 1, "Aniversário": 2,
     // YouTube: 5 no total (2 destaques do work-extras.js + 2 do 7x7 Allan + 1 da Mesa do Tempo)
     "youtube:7x7 Allan": 2, "youtube:Mesa do Tempo": 1 };
 
-  const ocultos = new Set(typeof OCULTOS !== "undefined" ? OCULTOS : []);
+  // Vídeos do site em português que já aparecem nos destaques (work-extras.js): ficam de fora para não repetir
+  const REPETIDOS = new Set([
+    "assets/midia/video-com-ia/adocs-property-mailers/01-property-mailers.mp4",
+    "yt:1bMs1gvvmUA",
+    "assets/midia/portifolio-eua/reels/08-brightside-rowing.mp4",
+    "assets/midia/documentario/documentarios/01-documentary-preview.mp4",
+    "assets/midia/documentario/documentarios/02-dinossauros.mp4",
+    "assets/midia/documentario/documentarios/03-nuremberg.mp4",
+    "assets/midia/documentario/documentarios/04-jared.mp4",
+    "assets/midia/documentario/documentarios/05-megalodon.mp4",
+    "assets/midia/gastronomico/izakaya-gaijin/01-djo1fr3tsqk.mp4",
+    "assets/midia/gastronomico/izakaya-gaijin/03-dimxj6ws9ev.mp4",
+    "assets/midia/gastronomico/izakaya-gaijin/04-dhzmikhsrrc.mp4",
+    "assets/midia/gastronomico/nerdsburguer/06-dwhe9kugo5k.mp4",
+    "assets/midia/gastronomico/nerdsburguer/27-dpe7k7bcanf.mp4",
+    "assets/midia/motion-graphics/explainers-e-motion/01-grandpa-max.mp4",
+    "assets/midia/motion-graphics/explainers-e-motion/02-percepcao-do-relogio.mp4",
+    "assets/midia/motion-graphics/explainers-e-motion/02-us-vs-mexico.mp4",
+    "assets/midia/motion-graphics/explainers-e-motion/03-youtube-editing.mp4",
+    "assets/midia/motion-graphics/explainers-e-motion/04-notion.mp4",
+    "assets/midia/portifolio-eua/reels/01-video-de-apresentacao.mp4",
+    "assets/midia/portifolio-eua/reels/02-knicks-mahjong.mp4",
+    "assets/midia/portifolio-eua/reels/04-hearthustle-before-after.mp4",
+    "assets/midia/portifolio-eua/reels/06-digital-asset-empire.mp4",
+    "assets/midia/portifolio-eua/reels/07-mario-zuniga-vermelho.mp4",
+    "assets/midia/portifolio-eua/youtube/02-youtube-cinematic.mp4",
+    "assets/midia/video-com-ia/comercial-de-perfume/01-perfume.mp4",
+    "assets/midia/video-com-ia/minotauro-energy/01-bebida-dos-campeoes.mp4",
+    "assets/midia/video-com-ia/minotauro-energy/02-energetico-blender.mp4",
+  ]);
+  const ocultos = new Set([...(typeof OCULTOS !== "undefined" ? OCULTOS : []), ...REPETIDOS]);
   const itens = [];
   (typeof WORK_EXTRAS !== "undefined" ? WORK_EXTRAS : []).forEach((it) => itens.push({ ...it, cliente: it.titulo, cat: it.categoria, destaque: true }));
   (typeof PROJETOS !== "undefined" ? PROJETOS : []).forEach((p) => {

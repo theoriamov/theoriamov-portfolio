@@ -4,55 +4,66 @@
    - YouTube:  { tipo: "youtube", id: "ID_DO_VIDEO", titulo: "...", categoria: "..." }
                (o ID é o que vem depois de "watch?v=" ou "youtu.be/")
    - Arquivo:  { tipo: "video", src: "assets/midia/extras/arquivo.mp4", poster: "assets/midia/extras/arquivo-thumb.jpg", vertical: true, titulo: "...", categoria: "..." }
-   categoria: reels | auto | ai | business | food | youtube | documentary | motion | events
+   categoria: reels | ai | youtube | explainer | documentary | motion | food | business | auto | events
    ========================================================= */
 const X = "assets/midia/extras/";
 const vid = (nome, titulo, categoria, vertical = true) => ({ tipo: "video", src: `${X}${nome}.mp4`, poster: `${X}${nome}-thumb.jpg`, vertical, titulo, categoria });
 
 const WORK_EXTRAS = [
-  vid("showreel-2026", "Showreel 2026", "reels"),
-  vid("freelancer-intro-video", "Video editor intro: talking head with motion graphics and text behind the subject", "motion", false),
-  vid("youtube-editing-promo", "YouTube editing promo: motion graphics ad with portfolio clips", "youtube", false),
-  vid("is-this-real-reel", "Is this real? Talking-head reel with motion graphics", "reels"),
-  vid("before-after-reel-1", "Before and after: phone footage turned into a cinematic reel", "reels"),
+  // ---- Reels & Social ----
   vid("before-after-reel-2", "Before and after: raw vs edited talking-head reel", "reels"),
-  vid("before-after-reel-3", "Before and after: interview reel with animated captions and graphics", "reels"),
   vid("before-after-reel-4", "Before and after: education brand ad with kinetic text", "reels"),
   vid("digital-asset-empire-motion", "Podcast reel with kinetic captions and motion graphics", "reels"),
+  vid("is-this-real-reel", "Is this real? Talking-head reel with motion graphics", "reels"),
+  vid("before-after-reel-1", "Before and after: phone footage turned into a cinematic reel", "reels"),
+  vid("before-after-reel-3", "Before and after: interview reel with animated captions and graphics", "reels"),
   vid("before-after-reel-5", "Before and after: Spanish talking-head reel with animated captions and UI", "reels"),
   vid("knicks-mahjong-reel", "Not your grandma's mahjong: event promo reel with kinetic text", "reels"),
-  vid("youtube-cinematic-promo", "Cinematic YouTube editing promo: hooks, B-roll, sound design and thumbnails", "youtube", false),
+  vid("brightside-rowing-reel", "Brightside Rowing: brand reel with kinetic text and giveaway call to action", "reels"),
+  vid("freelancer-intro-video", "Video editor intro: talking head with motion graphics and text behind the subject", "reels", false),
+  // ---- AI Video Ads ----
   vid("minotauro-energy-ad", "Minotauro Energy: AI commercial", "ai"),
+  vid("ai-perfume-ad", "AI product ad: perfume", "ai", false),
+  vid("property-mailers-explainer", "Adocs Property Mailers: AI-made narrated product explainer with UI animation", "ai", false),
+  vid("ai-knight-selfie", "AI video: medieval knight selfie", "ai"),
+  // ---- YouTube ----
+  vid("youtube-cinematic-promo", "Cinematic YouTube editing promo: hooks, B-roll, sound design and thumbnails", "youtube", false),
+  { tipo: "youtube", id: "fR-1Sz2qlPI", titulo: "Nelson Piquet's garage: long-form YouTube episode", categoria: "youtube" },
+  vid("youtube-editing-promo", "YouTube editing promo: motion graphics ad with portfolio clips", "youtube", false),
+  { tipo: "youtube", id: "VHMRHH2D6nQ", titulo: "YouTube video built from a script with images and B-roll", categoria: "youtube" },
+  { tipo: "youtube", id: "q1t6UABJddg", titulo: "5 watches I wouldn't buy without trying first: YouTube review", categoria: "youtube" },
+  { tipo: "youtube", id: "0gtZbfR_lnI", titulo: "Fiverr intro video: who I am and how I edit", categoria: "youtube" },
+  // ---- Animated Explainers (faceless YouTube, illustration only) ----
+  vid("grandpa-max-full-explainer", "Grandpa Max: full 11-minute animated YouTube explainer (2D characters, charts and UI)", "explainer", false),
+  vid("us-vs-mexico-map-explainer", "US vs Mexico: animated map explainer", "explainer", false),
+  vid("grandpa-max-brake-scam", "Explainer animation: how a brake-pad upsell works (2D motion)", "explainer", false),
+  vid("grandpa-max-chalkboard", "Chalkboard-style explainer animation with charts and characters", "explainer", false),
+  vid("dinosaur-explainer", "Dinosaur extinction explainer: kinetic text, UI and 3D Earth", "explainer", false),
+  // ---- Documentary ----
+  vid("documentary-process", "Documentary editing process: B-roll research, sound design and motion", "documentary", false),
+  { tipo: "youtube", id: "1bMs1gvvmUA", titulo: "Stalin's Secret: full WWII documentary on YouTube (archival footage, narration, maps)", categoria: "documentary" },
   vid("megalodon-documentary", "Megalodon: documentary edit with narration and sound design", "documentary", false),
   vid("trex-documentary", "T. rex: documentary editing sample (real footage only)", "documentary", false),
+  vid("stalin-war-documentary", "WWII archive documentary: archival footage, narration and sound design", "documentary", false),
+  vid("vintage-war-documentary", "Archive documentary: vintage footage, titles and sound design", "documentary", false),
   vid("five-dollar-habit", "The 5 Dollar Habit: finance documentary", "documentary", false),
   vid("minimum-payment-trap", "The Minimum Payment Trap: finance documentary", "documentary", false),
-  vid("grandpa-max-brake-scam", "Explainer animation: how a brake-pad upsell works (2D motion)", "motion", false),
-  vid("grandpa-max-chalkboard", "Chalkboard-style explainer animation with charts and characters", "motion", false),
-  vid("vintage-war-documentary", "Archive documentary: vintage footage, titles and sound design", "documentary", false),
-  vid("property-mailers-explainer", "Property Mailers: narrated product explainer with UI animation", "business", false),
-  vid("stalin-war-documentary", "WWII archive documentary: archival footage, narration and sound design", "documentary", false),
-  vid("dinosaur-explainer", "Dinosaur extinction explainer: kinetic text, UI and 3D Earth", "motion", false),
-  vid("us-vs-mexico-map-explainer", "US vs Mexico: animated map explainer", "motion", false),
-  vid("documentary-process", "Documentary editing process: B-roll research, sound design and motion", "documentary", false),
-  vid("car-reel-wrap-shop", "Car wrap shop: process and before/after reel", "auto"),
-  vid("car-reel-dealership", "Car dealership: talking-head reel with macro details", "auto"),
-  vid("food-reel-ramen", "Ramen restaurant: cinematic food reel", "food"),
+  { tipo: "youtube", id: "1Na6ipU6JEE", titulo: "Pompeii, 72 AD: documentary edit", categoria: "documentary" },
+  // ---- Motion Graphics ----
+  vid("saas-launch-motion", "SaaS product launch: UI motion graphics (spec ad)", "motion", false),
+  vid("showreel-2026", "Showreel 2026", "motion"),
+  vid("watch-ui-animation", "Watch specs: UI motion graphics", "motion", false),
+  vid("energy-drink-3d", "Energy drink: 3D product animation (Blender)", "motion"),
+  // ---- Food & Restaurants ----
   vid("food-reel-restaurant-tour", "Japanese restaurant: menu and ambience reel", "food"),
+  vid("food-reel-kids-day", "Burger restaurant: fun themed reel with text hooks", "food"),
   vid("food-reel-chef", "Japanese restaurant: chef and dishes reel", "food"),
   vid("food-reel-cocktails", "Bar: cocktail making reel", "food"),
   vid("food-reel-burger-week", "Burger restaurant: trend-style weekly menu reel", "food"),
-  vid("food-reel-kids-day", "Burger restaurant: fun themed reel with text hooks", "food"),
-  vid("juspago-about", "Juspago: brand explainer with UI animation", "business"),
+  // ---- Brand & Business ----
   vid("juspago-ente-devedor", "Juspago: educational video for a fintech", "business"),
-  vid("ai-perfume-ad", "AI product ad: perfume", "ai", false),
-  vid("ai-knight-selfie", "AI video: medieval knight selfie", "ai"),
-  vid("saas-launch-motion", "SaaS product launch: UI motion graphics (spec ad)", "motion", false),
-  vid("energy-drink-3d", "Energy drink: 3D product animation (Blender)", "motion"),
-  vid("watch-ui-animation", "Watch specs: UI motion graphics", "motion", false),
-  { tipo: "youtube", id: "fR-1Sz2qlPI", titulo: "Nelson Piquet's garage: long-form YouTube episode", categoria: "youtube" },
-  { tipo: "youtube", id: "VHMRHH2D6nQ", titulo: "YouTube video built from a script with images and B-roll", categoria: "youtube" },
-  { tipo: "youtube", id: "0gtZbfR_lnI", titulo: "Fiverr intro video: who I am and how I edit", categoria: "youtube" },
-  { tipo: "youtube", id: "1Na6ipU6JEE", titulo: "Pompeii, 72 AD: documentary edit", categoria: "documentary" },
-  { tipo: "youtube", id: "q1t6UABJddg", titulo: "5 watches I wouldn't buy without trying first: YouTube review", categoria: "youtube" },
+  vid("juspago-about", "Juspago: brand explainer with UI animation", "business"),
+  // ---- Automotive ----
+  vid("car-reel-wrap-shop", "Car wrap shop: process and before/after reel", "auto"),
+  vid("car-reel-dealership", "Car dealership: talking-head reel with macro details", "auto"),
 ];

@@ -32,8 +32,9 @@
     .stat span { color: var(--muted); font-size: .85rem; }
 
     .tabs { position: sticky; top: 0; z-index: 5; background: rgba(11, 11, 12, .92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-    .tabs__in { max-width: 1200px; margin: 0 auto; padding: 14px var(--gutter); display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+    .tabs__in { max-width: 1200px; margin: 0 auto; padding: 14px var(--gutter); display: flex; flex-wrap: wrap; gap: 8px; }
     .tabs__in::-webkit-scrollbar { display: none; }
+    @media (max-width: 700px) { .tabs { position: static; } }
     .tab { white-space: nowrap; border: 1.5px solid var(--line); border-radius: 999px; padding: .55em 1.2em; font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); transition: .2s; }
     .tab:hover { color: var(--fg); border-color: var(--fg); }
     .tab.is-on { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -82,9 +83,9 @@
     <div class="modal__nav"><button id="prev">Prev</button><span id="count"></span><button id="next">Next</button></div>
   </div>
 
-  <script src="assets/js/projetos.js?v=11"></script>
-  <script src="assets/js/ocultos.js?v=11"></script>
-  <script src="assets/js/work-extras.js?v=15"></script>
-  <script src="assets/js/work.js?v=11"></script>
+  <script src="assets/js/projetos.js?v=16"></script>
+  <script src="assets/js/ocultos.js?v=16"></script>
+  <script src="assets/js/work-extras.js?v=16"></script>
+  <script src="assets/js/work.js?v=16"></script>
 </body>
 </html>

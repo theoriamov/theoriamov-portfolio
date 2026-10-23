@@ -384,7 +384,8 @@ const PROJETOS = [
       },
       {
         "tipo": "youtube",
-        "id": "WmClusi2pAo"
+        "id": "1bMs1gvvmUA",
+        "titulo": "Stalin's Secret: documentário completo de 2ª Guerra"
       }
     ]
   },
@@ -1052,6 +1053,12 @@ const PROJETOS = [
         "tipo": "video",
         "src": "assets/midia/portifolio-eua/reels/07-mario-zuniga-vermelho.mp4",
         "poster": "assets/midia/portifolio-eua/reels/07-mario-zuniga-vermelho-thumb.jpg",
+        "vertical": true
+      },
+      {
+        "tipo": "video",
+        "src": "assets/midia/portifolio-eua/reels/08-brightside-rowing.mp4",
+        "poster": "assets/midia/portifolio-eua/reels/08-brightside-rowing-thumb.jpg",
         "vertical": true
       }
     ]
